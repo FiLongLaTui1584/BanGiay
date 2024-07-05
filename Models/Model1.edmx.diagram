@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="42b041f5b9f146edab5e693d5b7da269" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="CNPM_LTModel.Category" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_LTModel.ChiTietHoaDon" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_LTModel.DanhGia" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_LTModel.HoaDon" Width="1.5" PointX="10.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_LTModel.KichCo" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_LTModel.SanPham" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_LTModel.ThuongHieuSP" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_LTModel.User" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPM_LTModel.SPYeuThich" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="CNPM_LTModel.FK__SanPham__CatID__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_LTModel.FK__ChiTietHo__maHoa__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_LTModel.FK__ChiTietHoa__maSP__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_LTModel.FK__DanhGia__maUser__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_LTModel.FK__SanPham__maDanhg__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_LTModel.FK__HoaDon__maSP__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_LTModel.FK__HoaDon__maUser__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_LTModel.FK__SanPham__maSize__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_LTModel.FK__SanPham__MaTH__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_LTModel.FK__SPYeuThich__maSP__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="CNPM_LTModel.FK__SPYeuThic__maUse__47DBAE45" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

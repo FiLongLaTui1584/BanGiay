@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<main>
+
+    <div class="single-checkout">
+        <div class="container">
+            <div class="wrapper">
+                <div class="checkout flexwrap">
+                    <div class="item left styled">
+                        <h1>Shipping Address</h1>
+                        <form action="">
+                            <p>
+                                <label for="email">Email Address<span></span></label>
+                                <input type="email" name="email" id="email" autocomplete="off" required>
+                            </p>
+                            <p>
+                                <label for="fname">First Name<span></span></label>
+                                <input type="text" id="fname" required>
+                            </p>
+                            <p>
+                                <label for="lname">Last Name<span></span></label>
+                                <input type="text" id="lname" required>
+                            </p><p>
+                                <label for="cname">Company Name<span></span></label>
+                                <input type="text" id="cname">
+                            </p><p>
+                                <label for="adress">Stress Address<span></span></label>
+                                <input type="text" id="adress" required>
+                            </p>
+                            <p>
+                                <label for="city">City<span></span></label>
+                                <input type="text" id="city" required>
+                            </p>
+                            <p>
+                                <label for="state">State/Province<span></span></label>
+                                <input type="text" id="state" required>
+                            </p>
+
+                            <p>
+                                <label for="postal">Zip /Postal Code<span></span></label>
+                                <input type="number" id="postal" required>
+                            </p>
+                            <p>
+
+                                <label for="country">Country</label>
+                                <select name="country" id="country">
+                                    <option value=""></option>
+                                    <option value="1" selected="selected">VietNam</option>
+                                    <option value="2">United States</option>
+                                    <option value="3">Germany</option>
+                                    <option value="4">Japan</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="phone">Phone Number<span></span></label>
+                                <input type="number" id="phone" required>
+                            </p>
+                            <p>
+                                <label>Order Notes (optional)</label>
+                                <textarea cols="30" rows="10"></textarea>
+                            </p>
+                            <p class="checkset">
+                                <input type="checkbox" id="anaccount">
+                                <label for="anaccount">Create an account?</label>
+                            </p>
+                        </form>
+                        <div class="shipping-methods">
+                            <h2>Shipping Methods</h2>
+                            <p class="checkset">
+                                <input type="radio" checked>
+                                <label>$5.00 Flate Rate</label>
+                            </p>
+                        </div>
+                        <div class="primary-checkout">
+                            <button class="primary-button">Place Order</button>
+                        </div>
+                    </div>
+                    <div class="item right">
+                        <h2>Order Summary</h2>
+                        <div class="summary-order is_sticky">
+                            <div class="summary-totals">
+                                <ul>
+                                    <li>
+                                        <span>Subtotal</span>
+                                        <span>$2155.95</span>
+                                    </li>
+                                    <li>
+                                        <span>Discount</span>
+                                        <span>-$100.00</span>
+                                    </li>
+                                    <li>
+                                        <span>Shipping: Flat</span>
+                                        <span>$10.00</span>
+                                    </li>
+                                    <li>
+                                        <span>Total</span>
+                                        <span>$2065.95</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="products mini">
+                                <li class="item">
+                                    <div class="thumbnail object-cover">
+                                        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/47f1be7a-8cc2-4fbb-acfc-28212e7a8056/air-jordan-i-high-g-golf-shoes-qKzTBg.png" />
+                                    </div>
+                                    <div class="item-content">
+                                        <p>Air Jordan I High G</p>
+                                        <span class="price">
+                                            <span>5,279,000₫</span>
+                                            <span>x 2</span>
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="item">
+                                    <div class="thumbnail object-cover">
+                                        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/47f1be7a-8cc2-4fbb-acfc-28212e7a8056/air-jordan-i-high-g-golf-shoes-qKzTBg.png" />
+                                    </div>
+                                    <div class="item-content">
+                                        <p>Air Jordan I High G</p>
+                                        <span class="price">
+                                            <span>5,279,000₫</span>
+                                            <span>x 2</span>
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="item">
+                                    <div class="thumbnail object-cover">
+                                        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/47f1be7a-8cc2-4fbb-acfc-28212e7a8056/air-jordan-i-high-g-golf-shoes-qKzTBg.png" />
+                                    </div>
+                                    <div class="item-content">
+                                        <p>Air Jordan I High G</p>
+                                        <span class="price">
+                                            <span>5,279,000₫</span>
+                                            <span>x 2</span>
+                                        </span>
+                                    </div>
+                                </li>
+
+                                <li class="item">
+                                    <div class="thumbnail object-cover">
+                                        <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/47f1be7a-8cc2-4fbb-acfc-28212e7a8056/air-jordan-i-high-g-golf-shoes-qKzTBg.png" />
+                                    </div>
+                                    <div class="item-content">
+                                        <p>Air Jordan I High G</p>
+                                        <span class="price">
+                                            <span>5,279,000₫</span>
+                                            <span>x 2</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<!-----------------------main---------------------->

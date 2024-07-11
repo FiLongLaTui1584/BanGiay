@@ -1,0 +1,61 @@
+﻿@model List<BanGiay.Context.SanPham>
+@{
+    ViewBag.Title = "ProductCategory";
+}
+
+<div class="features">
+    <div class="container">
+        <div class="wrapper">
+            <div class="breadcrumb">
+                <ul class="flexitem">
+                    <li><a href="\">Home</a></li>
+                    <li><a href="#">Giay chay bo</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <div class="sectop flexitem">
+                    <h2><span class="circle"></span><span>TẤT CẢ SẢN PHẨM CỦA HÃNG</span></h2>
+                </div>
+                <div class="products main flexwrap">
+                    @foreach (var item in Model)
+                    {
+                        <div class="item">
+                            <div class="media">
+                                <div class="thumbnail object-cover">
+                                    <a href="@Url.Action("Detail", "Product", new { maSP = item.maSP })">
+                                        <img src="@Url.Content(item.HinhAnh1)" />
+                                    </a>
+                                </div>
+                                <div class="hoverable">
+                                    <ul>
+                                        <li class="active"><a href="#"><i class="ri-heart-line"></i></a></li>
+                                        <li><a href="#"><i class="ri-eye-line"></i></a></li>
+                                        <li><a href="#"><i class="ri-shuffle-line"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="discount circle flexcenter"><span>25%</span></div>
+                            </div>
+                            <div class="content">
+                                <div class="rating">
+                                    <div class="stars"></div>
+                                    <div class="stars"></div>
+                                    <div class="stars"></div>
+                                    <div class="stars"></div>
+                                    <div class="stars"></div>
+                                    <span class="mini-text">255</span>
+                                </div>
+                                <h3><a href="@Url.Action("Detail", "Product", new { maSP = item.maSP })">@item.tenSP</a></h3>
+                                <div class="price">
+                                    <span class="current">@item.GiaGiam₫</span>
+                                    <span class="normal mini-text">@item.GiaGoc₫</span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

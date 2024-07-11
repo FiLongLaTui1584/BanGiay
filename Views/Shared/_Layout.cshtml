@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@*@model BanGiay.Models.ViewModel*@
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,11 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
+
     <link href="~/Content/css/style.css" rel="stylesheet" />
 </head>
 <body>
-    
 
     <div id="page" class="site">
 
@@ -221,23 +222,11 @@
                                             <div class="mega">
                                                 <div class="flexcol">
                                                     <div class="row">
-                                                        <h4><a href="#">Giay The Thao</a></h4>
+                                                        <h4><a href="#">SHOP</a></h4>
                                                         <ul>
-                                                            <li><a href="#">Chay bo</a></li>
-                                                            <li><a href="#">Gym</a></li>
-                                                            <li><a href="#">Bong ro</a></li>
-                                                            <li><a href="#">Bong da</a></li>
-                                                            <li><a href="#">Dep the thao</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="row">
-                                                        <h4><a href="#">Giay Thoi trang</a></h4>
-                                                        <ul>
-                                                            <li><a href="#">Casual</a></li>
-                                                            <li><a href="#">Highend</a></li>
-                                                            <li><a href="#">Luxury</a></li>
-                                                            <li><a href="#">Designer</a></li>
-                                                            <li><a href="#">Slipper</a></li>
+                                                            @*@foreach(var item in Model.Category.Take(4)) {
+                                                                <li><a href="#">@item.NameCate</a></li> 
+                                                             }*@
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -253,42 +242,6 @@
                                             <a href="#">
                                                 <div class="icon-large"><i class="ri-men-line"></i></div>
                                                 Men
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon-large"><i class="ri-football-line"></i></div>
-                                                Sports
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon-large"><i class="ri-football-line"></i></div>
-                                                Sports
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon-large"><i class="ri-football-line"></i></div>
-                                                Sports
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon-large"><i class="ri-football-line"></i></div>
-                                                Sports
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon-large"><i class="ri-football-line"></i></div>
-                                                Sports
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon-large"><i class="ri-football-line"></i></div>
-                                                Sports
                                             </a>
                                         </li>
                                         <li>

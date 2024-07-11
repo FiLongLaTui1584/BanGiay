@@ -1,0 +1,330 @@
+﻿@model BanGiay.Context.SanPham
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+
+<main>
+    <div class="single-product">
+        <div class="container">
+            <div class="wrapper">
+                <div class="breadcrumb">
+                    <ul class="flexitem">
+                        <li><a href="\">Home</a></li>
+                        <li><a href="#">@Model.tenSP</a></li>
+                    </ul>
+                </div>
+                <!--breadcrumb-->
+                <div class="column">
+                    <div class="products one">
+                        <div class="flexwrap">
+                            <div class="row">
+                                <div class="item">
+                                    <div class="price">
+                                        <span class="discount">32%<br>OFF</span>
+                                    </div>
+                                    <div class="big-image">
+                                        <div class="big-image-wrapper swiper-wrapper">
+                                            <div class="image-show swiper-slide">
+                                                <a data-fslightbox href="@Url.Content(Model.HinhAnh1)"><img src="@Url.Content(Model.HinhAnh1)" /></a>
+                                            </div>
+                                            <div class="image-show swiper-slide">
+                                                <a data-fslightbox href="@Url.Content(Model.HinhAnh2)"><img src="@Url.Content(Model.HinhAnh2)" /></a>
+                                            </div>
+                                            <div class="image-show swiper-slide">
+                                                <a data-fslightbox href="@Url.Content(Model.HinhAnh3)"><img src="@Url.Content(Model.HinhAnh3)" /></a>
+                                            </div>
+                                            <div class="image-show swiper-slide">
+                                                <a data-fslightbox href="@Url.Content(Model.HinhAnh4)"><img src="@Url.Content(Model.HinhAnh4)" /></a>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
+                                    </div>
+
+                                    <div thumbSlider="" class="small-image">
+                                        <ul class="small-image-wrapper flexitem swiper-wrapper">
+                                            <li class="thumbnail-show swiper-slide ">
+                                                <img src="@Url.Content(Model.HinhAnh1)" />
+                                            </li>
+                                            <li class="thumbnail-show swiper-slide ">
+                                                <img src="@Url.Content(Model.HinhAnh2)" />
+                                            </li>
+                                            <li class="thumbnail-show swiper-slide ">
+                                                <img src="@Url.Content(Model.HinhAnh3)" />
+                                            </li>
+                                            <li class="thumbnail-show swiper-slide ">
+                                                <img src="@Url.Content(Model.HinhAnh4)" />
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="item"></div>
+                                <h1>@Model.tenSP</h1>
+                                <div class="content">
+                                    <div class="rating">
+                                        <div class="stars"></div>
+                                        <div class="stars"></div>
+                                        <div class="stars"></div>
+                                        <div class="stars"></div>
+                                        <div class="stars"></div>
+                                        <a href="#" class="mini-text">@Model.SLBan đã bán</a>
+                                        <a href="" class="add-review mini-text">Add your review</a>
+                                    </div>
+                                    <div class="stock-sku">
+                                        <span class="available">@Model.TinhTrangSP</span>
+                                        <span class="sku mini-text">@Model.maSP</span>
+                                    </div>
+                                    <div class="price">
+                                        <span class="current">@Model.GiaGiam đ</span>
+                                        <span class="normal">@Model.GiaGoc ₫</span>
+                                    </div>
+                                    <div class="colors">
+                                        <p>Color:       @Model.MauSac</p>
+                                        @*<div class="variant">
+                                            <form action="">
+                                                <P>
+                                                    <input type="radio" name="color" id="cogrey">
+                                                    <label for="cogrey" class="circle"></label>
+                                                </P>
+                                                <P>
+                                                    <input type="radio" name="color" id="coblue">
+                                                    <label for="coblue" class="circle"></label>
+                                                </P>
+                                                <P>
+                                                    <input type="radio" name="color" id="cogreen">
+                                                    <label for="cogreen" class="circle"></label>
+                                                </P>
+                                            </form>
+                                        </div>*@
+                                    </div>
+                                    <div class="sizes">
+                                        <p>
+                                            Size
+                                        </p>
+                                        <div class="variant">
+                                            <form action="">
+                                                <P>
+                                                    <input type="radio" name="size" id="size-40" />
+                                                    <label for="size-40" class="circle"><span>40</span></label>
+                                                </P>
+                                                <P>
+                                                    <input type="radio" name="size" id="size-41" />
+                                                    <label for="size-41" class="circle"><span>41</span></label>
+                                                </P>
+                                                <P>
+                                                    <input type="radio" name="size" id="size-42" />
+                                                    <label for="size-42" class="circle"><span>42</span></label>
+                                                </P>
+                                                <P>
+                                                    <input type="radio" name="size" id="size-43" />
+                                                    <label for="size-43" class="circle"><span>43</span></label>
+                                                </P>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="actions">
+                                        <div class="qty-control flexitem">
+                                            <button class="minus circle">-</button>
+                                            <input type="text" value="1">
+                                            <button class="plus circle">+</button>
+                                        </div>
+                                        <div class="button-cart"><button class="primary-button">Add to cart</button></div>
+                                        <div class="wish-share">
+                                            <ul class="flexitem second-links">
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="icon-large"><i class="ri-heart-line"></i></span>
+                                                        <span>Wish List</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="icon-large"><i class="ri-share-line"></i></span>
+                                                        <span>Share</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="description collapse">
+                                        <ul>
+                                            <li class="has-child expand">
+                                                <a href="#" class="icon-small">Details</a>
+                                                <ul class="content">
+                                                    <li><span>Brands</span><span>Nike</span></li>
+                                                    <li><span>Activity</span><span>Running</span></li>
+                                                    <li><span>Material</span><span>Fleece</span></li>
+                                                    <li><span>Gender</span><span>Gay</span></li>
+                                                </ul>
+                                            </li>
+                                            <li class="has-child">
+                                                <a href="#" class="icon-small">Information</a>
+                                                <div class="content">
+                                                    <p>@Model.MoTaSP</p>
+                                                </div>
+                                            </li>
+                                            <li class="has-child">
+                                                <a href="#" class="icon-small">Custom</a>
+                                                <div class="content">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>US</th>
+                                                                <th>UK</th>
+                                                                <th>VN</th>
+                                                                <th>Milimeter<span class="mini-text">(mm)</span></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>7</td>
+                                                                <td>6.5</td>
+                                                                <td>40</td>
+                                                                <td>250</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>8</td>
+                                                                <td>7.5</td>
+                                                                <td>41</td>
+                                                                <td>260</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>8.5</td>
+                                                                <td>8</td>
+                                                                <td>42</td>
+                                                                <td>270</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>9.5</td>
+                                                                <td>9</td>
+                                                                <td>43</td>
+                                                                <td>280</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>10</td>
+                                                                <td>9.5</td>
+                                                                <td>44</td>
+                                                                <td>290</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </li>
+                                            <li class="has-child expand">
+                                                <a href="#" class="icon-small">Reviews<span class="mini-text">2.2k</span></a>
+                                                <div class="content">
+                                                    <div class="reviews">
+                                                        <h4>Customers Reviews</h4>
+                                                        <div class="review-block">
+                                                            <div class="review-block-head">
+                                                                <div class="flexitem">
+                                                                    <span class="rate-sum">4.9</span>
+                                                                    <span>2,251 Reviews</span>
+                                                                </div>
+                                                                <a href="#review-form" class="secondary-button">Write review</a>
+                                                            </div>
+                                                            <div class="review-block-body">
+                                                                <ul>
+                                                                    <li class="item">
+                                                                        <div class="review-form">
+                                                                            <p class="person">Review by Duc</p>
+                                                                            <p class="mini-text">On 7/7/24</p>
+                                                                        </div>
+                                                                        <div class="review-rating rating">
+                                                                            <div class="stars"></div>
+                                                                            <div class="stars"></div>
+                                                                            <div class="stars"></div>
+                                                                            <div class="stars"></div>
+                                                                            <div class="stars"></div>
+                                                                        </div>
+                                                                        <div class="review-title">
+                                                                            <p>Awesome product!</p>
+                                                                        </div>
+                                                                        <div class="review-text">
+                                                                            <p>Món đồ rất đáng tiền mua.</p>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="item">
+                                                                        <div class="review-form">
+                                                                            <p class="person">Review by Minh</p>
+                                                                            <p class="mini-text">On 7/7/24</p>
+                                                                        </div>
+                                                                        <div class="review-rating rating">
+                                                                            <div class="stars"></div>
+                                                                            <div class="stars"></div>
+                                                                            <div class="stars"></div>
+                                                                            <div class="stars"></div>
+                                                                        </div>
+                                                                        <div class="review-title">
+                                                                            <p>Awesome product!</p>
+                                                                        </div>
+                                                                        <div class="review-text">
+                                                                            <p>Món đồ rất khá đẹp.</p>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="second-links">
+                                                                    <a href="#" class="view-all">View all reviews<i class="ri-arrow-right-line"></i></a>
+                                                                </div>
+                                                            </div>
+                                                            <div id="review-rorm" class="review-form">
+                                                                <h4>Write a review</h4>
+                                                                <div class="rating">
+                                                                    <p>Are you satisfied enough?</p>
+                                                                    <div class="rate-this">
+                                                                        <input type="radio" name="rating" id="star5">
+                                                                        <label for="star5"><i class="ri-star-fill"></i></label>
+
+                                                                        <input type="radio" name="rating" id="star4">
+                                                                        <label for="star4"><i class="ri-star-fill"></i></label>
+
+                                                                        <input type="radio" name="rating" id="star3">
+                                                                        <label for="star3"><i class="ri-star-fill"></i></label>
+
+                                                                        <input type="radio" name="rating" id="star2">
+                                                                        <label for="star2"><i class="ri-star-fill"></i></label>
+
+                                                                        <input type="radio" name="rating" id="star1">
+                                                                        <label for="star1"><i class="ri-star-fill"></i></label>
+                                                                    </div>
+                                                                </div>
+                                                                <form action="">
+                                                                    <p>
+                                                                        <label>Name</label>
+                                                                        <input type="text">
+                                                                    </p>
+                                                                    <p>
+                                                                        <label>Summary</label>
+                                                                        <input type="text">
+                                                                    </p>
+                                                                    <p>
+                                                                        <label>Review</label>
+                                                                        <textarea cols="30" rows="10"></textarea>
+                                                                    </p>
+                                                                    <p><a href="#" class="primary-button">Submit Review</a></p>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</main>
+<!-----------------------main---------------------->

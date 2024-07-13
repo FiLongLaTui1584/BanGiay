@@ -120,6 +120,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Context\Category.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -197,26 +199,6 @@
     <Content Include="Content\Image\Brand\logo_NB.png" />
     <Content Include="Content\Image\Brand\logo_Nike.jpg" />
     <Content Include="Content\Image\Brand\logo_Puma.jpg" />
-    <Content Include="Content\Image\SanPham\SP01.1.jpg" />
-    <Content Include="Content\Image\SanPham\SP01.2.png" />
-    <Content Include="Content\Image\SanPham\SP01.3.png" />
-    <Content Include="Content\Image\SanPham\SP01.4.png" />
-    <Content Include="Content\Image\SanPham\SP02.1.jpg" />
-    <Content Include="Content\Image\SanPham\SP02.2.jpg" />
-    <Content Include="Content\Image\SanPham\SP02.3.png" />
-    <Content Include="Content\Image\SanPham\SP02.4.jpg" />
-    <Content Include="Content\Image\SanPham\SP03.1.png" />
-    <Content Include="Content\Image\SanPham\SP03.2.png" />
-    <Content Include="Content\Image\SanPham\SP03.3.png" />
-    <Content Include="Content\Image\SanPham\SP03.4.png" />
-    <Content Include="Content\Image\SanPham\SP04.1.jpg" />
-    <Content Include="Content\Image\SanPham\SP04.2.jpg" />
-    <Content Include="Content\Image\SanPham\SP04.3.jpg" />
-    <Content Include="Content\Image\SanPham\SP04.4.jpg" />
-    <Content Include="Content\Image\SanPham\SP05.1.jpg" />
-    <Content Include="Content\Image\SanPham\SP05.2.jpg" />
-    <Content Include="Content\Image\SanPham\SP05.3.jpg" />
-    <Content Include="Content\Image\SanPham\SP05.4.jpg" />
     <Content Include="Context\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBModel.edmx</DependentUpon>
@@ -243,6 +225,14 @@
     <Content Include="Context\DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Delete.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -277,6 +267,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Content\Image\SanPham\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

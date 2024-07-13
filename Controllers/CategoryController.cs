@@ -1,4 +1,5 @@
 ﻿using BanGiay.Context;
+using BanGiay.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,16 @@ namespace BanGiay.Controllers
         public ActionResult ProductCategory(int MaTH)
         {
             var listSP = objCNPMEntities.SanPhams.Where(n => n.MaTH == MaTH).ToList();
-            return View(listSP);
+            var listTH = objCNPMEntities.ThuongHieuSPs.Where(n => n.MaTH == MaTH).ToList();
+
+
+            var viewModel = new ViewModel
+            {
+                SanPham = listSP,
+                ThuongHieuSP = listTH
+            };
+
+            return View(viewModel);
         }
     }
 }

@@ -1,0 +1,152 @@
+﻿@model BanGiay.Context.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Xóa thiệt hả cha?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.maSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrangSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MauSac)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MauSac)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnh1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnh2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnh3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnh4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnh4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTaSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTaSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaGoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaGoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaGiam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaGiam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SLBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SLBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaTH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaTH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CatID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maDanhgia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maDanhgia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.maSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maSize)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Quay về", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BanGiay.Context.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2>Danh sách sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Thêm sản phẩm", "Create", null, new { @class = "btn btn-success"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.maSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tenSP)
+        </th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.maSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenSP)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id=item.maSP }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.maSP }, new { @class = "btn btn-dark" }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.maSP }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

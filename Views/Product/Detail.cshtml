@@ -1,4 +1,4 @@
-﻿@model BanGiay.Context.SanPham
+﻿@model BanGiay.Models.ViewModel
 
 @{
     ViewBag.Title = "Detail";
@@ -12,7 +12,8 @@
                 <div class="breadcrumb">
                     <ul class="flexitem">
                         <li><a href="\">Home</a></li>
-                        <li><a href="#">@Model.tenSP</a></li>
+                        <li><a href="@Url.Action("ProductCategory", "Category",new { MaTH = Model.SanPham1.MaTH })">@Model.TenThuongHieu</a></li>
+                        <li><a href="#">@Model.SanPham1.tenSP</a></li>
                     </ul>
                 </div>
                 <!--breadcrumb-->
@@ -27,16 +28,16 @@
                                     <div class="big-image">
                                         <div class="big-image-wrapper swiper-wrapper">
                                             <div class="image-show swiper-slide">
-                                                <a data-fslightbox href="@Url.Content(Model.HinhAnh1)"><img src="@Url.Content(Model.HinhAnh1)" /></a>
+                                                <a data-fslightbox href="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh1)"><img src="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh1)" /></a>
                                             </div>
                                             <div class="image-show swiper-slide">
-                                                <a data-fslightbox href="@Url.Content(Model.HinhAnh2)"><img src="@Url.Content(Model.HinhAnh2)" /></a>
+                                                <a data-fslightbox href="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh2)"><img src="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh2)" /></a>
                                             </div>
                                             <div class="image-show swiper-slide">
-                                                <a data-fslightbox href="@Url.Content(Model.HinhAnh3)"><img src="@Url.Content(Model.HinhAnh3)" /></a>
+                                                <a data-fslightbox href="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh3)"><img src="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh3)" /></a>
                                             </div>
                                             <div class="image-show swiper-slide">
-                                                <a data-fslightbox href="@Url.Content(Model.HinhAnh4)"><img src="@Url.Content(Model.HinhAnh4)" /></a>
+                                                <a data-fslightbox href="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh4)"><img src="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh4)" /></a>
                                             </div>
                                         </div>
                                         <div class="swiper-button-next"></div>
@@ -46,16 +47,16 @@
                                     <div thumbSlider="" class="small-image">
                                         <ul class="small-image-wrapper flexitem swiper-wrapper">
                                             <li class="thumbnail-show swiper-slide ">
-                                                <img src="@Url.Content(Model.HinhAnh1)" />
+                                                <img src="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh1)" />
                                             </li>
                                             <li class="thumbnail-show swiper-slide ">
-                                                <img src="@Url.Content(Model.HinhAnh2)" />
+                                                <img src="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh2)" />
                                             </li>
                                             <li class="thumbnail-show swiper-slide ">
-                                                <img src="@Url.Content(Model.HinhAnh3)" />
+                                                <img src="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh3)" />
                                             </li>
                                             <li class="thumbnail-show swiper-slide ">
-                                                <img src="@Url.Content(Model.HinhAnh4)" />
+                                                <img src="@Url.Content("~/Content/Image/SanPham/"+Model.SanPham1.HinhAnh4)" />
                                             </li>
                                         </ul>
                                     </div>
@@ -63,7 +64,7 @@
                             </div>
                             <div class="row">
                                 <div class="item"></div>
-                                <h1>@Model.tenSP</h1>
+                                <h1>@Model.SanPham1.tenSP</h1>
                                 <div class="content">
                                     <div class="rating">
                                         <div class="stars"></div>
@@ -71,36 +72,20 @@
                                         <div class="stars"></div>
                                         <div class="stars"></div>
                                         <div class="stars"></div>
-                                        <a href="#" class="mini-text">@Model.SLBan đã bán</a>
                                         <a href="" class="add-review mini-text">Add your review</a>
                                     </div>
                                     <div class="stock-sku">
-                                        <span class="available">@Model.TinhTrangSP</span>
-                                        <span class="sku mini-text">@Model.maSP</span>
+                                        <span class="available">@Model.SanPham1.TinhTrangSP</span>
                                     </div>
                                     <div class="price">
-                                        <span class="current">@Model.GiaGiam đ</span>
-                                        <span class="normal">@Model.GiaGoc ₫</span>
+                                        <span class="current">@Model.SanPham1.GiaGiam đ</span>
+                                        <span class="normal">@Model.SanPham1.GiaGoc ₫</span>
                                     </div>
-                                    <div class="colors">
-                                        <p>Color:       @Model.MauSac</p>
-                                        @*<div class="variant">
-                                            <form action="">
-                                                <P>
-                                                    <input type="radio" name="color" id="cogrey">
-                                                    <label for="cogrey" class="circle"></label>
-                                                </P>
-                                                <P>
-                                                    <input type="radio" name="color" id="coblue">
-                                                    <label for="coblue" class="circle"></label>
-                                                </P>
-                                                <P>
-                                                    <input type="radio" name="color" id="cogreen">
-                                                    <label for="cogreen" class="circle"></label>
-                                                </P>
-                                            </form>
-                                        </div>*@
-                                    </div>
+                                    @*<div class="colors">
+                                        <p>Color :
+                                        <span style="font-weight: bold;">@Model.MauSac</span> 
+                                        </p>
+                                    </div>*@
                                     <div class="sizes">
                                         <p>
                                             Size
@@ -155,16 +140,16 @@
                                             <li class="has-child expand">
                                                 <a href="#" class="icon-small">Details</a>
                                                 <ul class="content">
-                                                    <li><span>Brands</span><span>Nike</span></li>
-                                                    <li><span>Activity</span><span>Running</span></li>
-                                                    <li><span>Material</span><span>Fleece</span></li>
+                                                    <li><span>Brand</span><span>@Model.TenThuongHieu</span></li>
+                                                    <li><span>Sold</span><span>@Model.SanPham1.SLBan</span></li>
+                                                    <li><span>Color</span><span>@Model.SanPham1.MauSac</span></li>
                                                     <li><span>Gender</span><span>Gay</span></li>
                                                 </ul>
                                             </li>
                                             <li class="has-child">
                                                 <a href="#" class="icon-small">Information</a>
                                                 <div class="content">
-                                                    <p>@Model.MoTaSP</p>
+                                                    <p>@Model.SanPham1.MoTaSP</p>
                                                 </div>
                                             </li>
                                             <li class="has-child">

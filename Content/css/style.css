@@ -33,7 +33,7 @@
 }
 
 body {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.4;
@@ -70,9 +70,9 @@ input::placeholder {
 }
 
 
-h1, h2, h3, h4 {
-    font-family: 'Poppins';
-}
+/*h1, h2, h3, h4 {
+    font-family: 'Roboto';
+}*/
 
 h1 {
     font-size: calc(1.3em + 1vw);
@@ -352,7 +352,7 @@ view-all {
 }
 
 .logo a {
-    font-family: 'Poppins';
+    font-family: 'Roboto';
     font-size: 1.75em;
     position: relative;
     font-weight: var(--fw8);
@@ -1832,7 +1832,7 @@ form label {
 
 .cart-summary .grand-total td {
     font-size: 2em;
-    font-family: 'Poppins';
+    font-family: 'Roboto';
     font-weight: var(--fw8);
     line-height: 2em;
 }

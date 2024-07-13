@@ -12,7 +12,7 @@ namespace BanGiay.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        CNPMEntities database = new CNPMEntities();
+        CNPMEntities1 database = new CNPMEntities1();
         // GET: Admin/Home
         public ActionResult Index()
         {
@@ -26,6 +26,15 @@ namespace BanGiay.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            var categories = database.Categories.ToList();
+            ViewBag.CategoryList = new SelectList(categories, "CatID", "NameCate");
+
+            var sizes = database.KichCoes.ToList();
+            ViewBag.SizeList = new SelectList(sizes, "maSize", "size");
+
+            var brand = database.ThuongHieuSPs.ToList();
+            ViewBag.BrandList = new SelectList(brand, "MaTH", "TenTH");
+
             return View();
         }
         [HttpPost]
@@ -96,8 +105,19 @@ namespace BanGiay.Areas.Admin.Controllers
 
         //************************************************SỬA SẢN PHẨM***********************************************//
         [HttpGet]
-        public ActionResult Edit(int id){ 
-            return View(database.SanPhams.Where(n => n.maSP == id).FirstOrDefault());
+        public ActionResult Edit(int id){
+            var sanpham = database.SanPhams.Where(n => n.maSP == id).FirstOrDefault();
+
+            var categories = database.Categories.ToList();
+            ViewBag.CategoryList = new SelectList(categories, "CatID", "NameCate", sanpham.CatID);
+
+            var sizes = database.KichCoes.ToList();
+            ViewBag.SizeList = new SelectList(sizes, "maSize", "size", sanpham.maSize);
+
+            var brand = database.ThuongHieuSPs.ToList();
+            ViewBag.BrandList = new SelectList(brand, "MaTH", "TenTH", sanpham.MaTH);
+
+            return View(sanpham);
         }
 
         [HttpPost]
@@ -145,6 +165,7 @@ namespace BanGiay.Areas.Admin.Controllers
                     existingSanPham.CatID = sanpham.CatID;
                     existingSanPham.maDanhgia = sanpham.maDanhgia;
                     existingSanPham.maSize = sanpham.maSize;
+                    existingSanPham.giamGia = sanpham.giamGia;
 
                     database.Entry(existingSanPham).State = EntityState.Modified;
                     database.SaveChanges();

@@ -11,7 +11,7 @@ namespace BanGiay.Controllers
 {
     public class HomeController : Controller
     {
-        CNPMEntities objCNPMEntities = new CNPMEntities();  
+        CNPMEntities1 objCNPMEntities = new CNPMEntities1();  
         public ActionResult Index()
         {
             var listSP = objCNPMEntities.SanPhams.ToList();

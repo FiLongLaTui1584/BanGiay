@@ -10,7 +10,7 @@ namespace BanGiay.Controllers
 {
     public class ProductController : Controller
     {
-        CNPMEntities objCNPMEntities = new CNPMEntities();
+        CNPMEntities1 objCNPMEntities = new CNPMEntities1();
         // GET: Product
         
         public ActionResult Detail(int maSP)

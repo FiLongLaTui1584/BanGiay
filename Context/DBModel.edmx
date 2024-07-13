@@ -76,6 +76,7 @@
           <Property Name="CatID" Type="int" Nullable="false" />
           <Property Name="maDanhgia" Type="int" Nullable="false" />
           <Property Name="maSize" Type="int" Nullable="false" />
+          <Property Name="giamGia" Type="int" />
         </EntityType>
         <EntityType Name="SPYeuThich">
           <Key>
@@ -376,6 +377,7 @@
           <Property Name="CatID" Type="Int32" Nullable="false" />
           <Property Name="maDanhgia" Type="Int32" Nullable="false" />
           <Property Name="maSize" Type="Int32" Nullable="false" />
+          <Property Name="giamGia" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="Self.FK__SanPham__CatID__4316F928" FromRole="SanPham" ToRole="Category" />
           <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHoa__maSP__4F7CD00D" FromRole="SanPham" ToRole="ChiTietHoaDon" />
           <NavigationProperty Name="DanhGia" Relationship="Self.FK__SanPham__maDanhg__440B1D61" FromRole="SanPham" ToRole="DanhGia" />
@@ -549,7 +551,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CNPMEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CNPMEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="DanhGias" EntityType="Self.DanhGia" />
@@ -609,7 +611,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CNPMModelStoreContainer" CdmEntityContainer="CNPMEntities">
+        <EntityContainerMapping StorageEntityContainer="CNPMModelStoreContainer" CdmEntityContainer="CNPMEntities1">
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="CNPMModel.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -685,6 +687,7 @@
                 <ScalarProperty Name="CatID" ColumnName="CatID" />
                 <ScalarProperty Name="maDanhgia" ColumnName="maDanhgia" />
                 <ScalarProperty Name="maSize" ColumnName="maSize" />
+                <ScalarProperty Name="giamGia" ColumnName="giamGia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

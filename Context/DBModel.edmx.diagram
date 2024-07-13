@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="edbf2fd81a8541bd805063f80b1fd963" Name="Diagram1">
+      <Diagram DiagramId="efc418469c5b44bc87574e142d891901" Name="Diagram1">
         <EntityTypeShape EntityType="CNPMModel.Category" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="CNPMModel.ChiTietHoaDon" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CNPMModel.DanhGia" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CNPMModel.HoaDon" Width="1.5" PointX="10.5" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CNPMModel.KichCo" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMModel.SanPham" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPMModel.SanPham" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CNPMModel.SPYeuThich" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CNPMModel.ThuongHieuSP" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CNPMModel.User" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />

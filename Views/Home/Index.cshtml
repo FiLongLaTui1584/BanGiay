@@ -80,7 +80,7 @@
                     <div class="sectop flexitem">
                         <h2><span class="circle"></span><span>SẢN PHẨM NỔI BẬT</span></h2>
                         <div class="second-links">
-                            <a href="#" class="view-all">View all<i class="ri-arrow-right-line"></i></a>
+                            @*<a href="#" class="view-all">View all<i class="ri-arrow-right-line"></i></a>*@
                         </div>
                     </div>
                     <div class="products main flexwrap">
@@ -103,7 +103,7 @@
                                             <li><a href="#"><i class="ri-shuffle-line"></i></a></li>
                                         </ul>
                                     </div>
-                                    <div class="discount circle flexcenter"><span>25%</span></div>
+                                    <div class="discount circle flexcenter"><span>@item.giamGia%</span></div>
                                 </div>
                                 <div class="content">
                                     <div class="rating">
@@ -112,7 +112,7 @@
                                         <div class="stars"></div>
                                         <div class="stars"></div>
                                         <div class="stars"></div>
-                                        <span class="mini-text">255</span>
+                                        <span class="mini-text">@item.SLBan đã bán</span>
                                     </div>
                                     <h3><a href="@Url.Action("Detail", "Product", new { maSP = item.maSP })">@item.tenSP</a></h3>
                                     <div class="price">

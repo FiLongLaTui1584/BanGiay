@@ -2,145 +2,147 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Chi tiết sản phẩm</h2>
+<style>
+    .container1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-width: 1280px;
+        margin: 0 auto 2em;
+    }
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.maSP)
-        </dt>
+    .styled {
+        padding: 2em;
+        box-shadow: 0 15px 70px -8px rgb(0 0 0 / 20%);
+        border-radius: 20px;
+        width: 95%
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.maSP)
-        </dd>
+    h2 {
+        font-weight: bold;
+        text-align: center;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tenSP)
-        </dt>
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1.5em;
+        border-radius: 20px;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.tenSP)
-        </dd>
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TinhTrangSP)
-        </dt>
+    th {
+        background-color: #808080;
+        color: var(--white-color);
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.TinhTrangSP)
-        </dd>
+    .btn {
+        padding: 0.5em 1em;
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 0.5em;
+        text-align: center;
+        border-radius: 10px;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MauSac)
-        </dt>
+    .btn-success {
+        background-color: #28a745;
+        color: var(--white-color);
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.MauSac)
-        </dd>
+    .btn-dark {
+        background-color: #343a40;
+        color: var(--white-color);
+    }
+</style>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh1)
-        </dt>
+<div class="container1">
+    <div class="styled">
+        <h2>Chi tiết sản phẩm</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh1)
-        </dd>
+        <hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh2)
-        </dt>
+        <table>
+            <tr>
+                <th>Mã sản phẩm</th>
+                <td>@Html.DisplayFor(model => model.maSP)</td>
+            </tr>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <td>@Html.DisplayFor(model => model.tenSP)</td>
+            </tr>
+            <tr>
+                <th>Tình trạng sản phẩm</th>
+                <td>@Html.DisplayFor(model => model.TinhTrangSP)</td>
+            </tr>
+            <tr>
+                <th>Màu sắc</th>
+                <td>@Html.DisplayFor(model => model.MauSac)</td>
+            </tr>
+            <tr>
+                <th>Hình ảnh 1</th>
+                <td>@Html.DisplayFor(model => model.HinhAnh1)</td>
+            </tr>
+            <tr>
+                <th>Hình ảnh 2</th>
+                <td>@Html.DisplayFor(model => model.HinhAnh2)</td>
+            </tr>
+            <tr>
+                <th>Hình ảnh 3</th>
+                <td>@Html.DisplayFor(model => model.HinhAnh3)</td>
+            </tr>
+            <tr>
+                <th>Hình ảnh 4</th>
+                <td>@Html.DisplayFor(model => model.HinhAnh4)</td>
+            </tr>
+            <tr>
+                <th>Mô tả sản phẩm</th>
+                <td>@Html.DisplayFor(model => model.MoTaSP)</td>
+            </tr>
+            <tr>
+                <th>Giá gốc</th>
+                <td>@Html.DisplayFor(model => model.GiaGoc)</td>
+            </tr>
+            <tr>
+                <th>Giá giảm</th>
+                <td>@Html.DisplayFor(model => model.GiaGiam)</td>
+            </tr>
+            <tr>
+                <th>Số lượng bán</th>
+                <td>@Html.DisplayFor(model => model.SLBan)</td>
+            </tr>
+            <tr>
+                <th>Mã thương hiệu</th>
+                <td>@Html.DisplayFor(model => model.MaTH)</td>
+            </tr>
+            <tr>
+                <th>Loại sản phẩm</th>
+                <td>@Html.DisplayFor(model => model.CatID)</td>
+            </tr>
+            <tr>
+                <th>Mã đánh giá</th>
+                <td>@Html.DisplayFor(model => model.maDanhgia)</td>
+            </tr>
+            <tr>
+                <th>Mã size</th>
+                <td>@Html.DisplayFor(model => model.maSize)</td>
+            </tr>
+        </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh2)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh3)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh3)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh4)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh4)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTaSP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MoTaSP)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaGoc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaGoc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaGiam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaGiam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SLBan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SLBan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MaTH)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MaTH)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CatID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CatID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.maDanhgia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.maDanhgia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.maSize)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.maSize)
-        </dd>
-
-    </dl>
+        <p style="margin-top:20px">
+            @Html.ActionLink("Sửa", "Edit", new { id = Model.maSP }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Quay về", "Index", null, new { @class = "btn btn-dark" })
+        </p>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Sửa", "Edit", new { id = Model.maSP },  new { @class = "btn btn-success" }) |
-    @Html.ActionLink("Quay về", "Index")
-</p>

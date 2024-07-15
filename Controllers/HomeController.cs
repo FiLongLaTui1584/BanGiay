@@ -97,7 +97,7 @@ namespace BanGiay.Controllers
             }
 
             var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
-            return Json(new { success = false, message = string.Join("<br>", errors) });
+            return Json(new { success = false, message = string.Join("  -  ", errors) });
         }
 
 

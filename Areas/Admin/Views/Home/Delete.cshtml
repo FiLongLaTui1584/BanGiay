@@ -2,151 +2,130 @@
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Xóa</h2>
-
-<h3>Xóa thiệt hả cha?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.maSP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.maSP)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.tenSP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tenSP)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TinhTrangSP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TinhTrangSP)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MauSac)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MauSac)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh2)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh2)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh3)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh3)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh4)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh4)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTaSP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MoTaSP)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaGoc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaGoc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaGiam)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaGiam)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SLBan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SLBan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MaTH)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MaTH)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CatID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CatID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.maDanhgia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.maDanhgia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.maSize)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.maSize)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-danger" /> |
-            @Html.ActionLink("Quay về", "Index")
-        </div>
+<style>
+    .container1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-width: 1280px;
+        margin: 0 auto 2em;
     }
+
+    .styled {
+        padding: 2em;
+        box-shadow: 0 15px 70px -8px rgb(0 0 0 / 20%);
+        border-radius: 20px;
+        width: 95%
+    }
+
+    h2 {
+        font-weight: bold;
+        text-align: center;
+    }
+
+
+    dl {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 10px 20px;
+        margin-bottom: 20px;
+    }
+
+    dt {
+        font-weight: bold;
+    }
+
+    .btn {
+        padding: 0.5em 1em;
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 0.5em;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: var(--white-color);
+    }
+
+    .btn-dark {
+        background-color: #343a40;
+        color: var(--white-color);
+    }
+</style>
+
+<div class="container1">
+    <div class="styled">
+        <h2>Xóa sản phẩm</h2>
+
+
+        <hr />
+
+        <dl style="margin-top:20px">
+            <dt>Mã sản phẩm</dt>
+            <dd>@Html.DisplayFor(model => model.maSP)</dd>
+
+            <dt>Tên sản phẩm</dt>
+            <dd>@Html.DisplayFor(model => model.tenSP)</dd>
+
+            <dt>Tình trạng sản phẩm</dt>
+            <dd>@Html.DisplayFor(model => model.TinhTrangSP)</dd>
+
+            <dt>Màu sắc</dt>
+            <dd>@Html.DisplayFor(model => model.MauSac)</dd>
+
+            <dt>Hình ảnh 1</dt>
+            <dd>@Html.DisplayFor(model => model.HinhAnh1)</dd>
+
+            <dt>Hình ảnh 2</dt>
+            <dd>@Html.DisplayFor(model => model.HinhAnh2)</dd>
+
+            <dt>Hình ảnh 3</dt>
+            <dd>@Html.DisplayFor(model => model.HinhAnh3)</dd>
+
+            <dt>Hình ảnh 4</dt>
+            <dd>@Html.DisplayFor(model => model.HinhAnh4)</dd>
+
+            <dt>Mô tả sản phẩm</dt>
+            <dd>@Html.DisplayFor(model => model.MoTaSP)</dd>
+
+            <dt>Giá gốc</dt>
+            <dd>@Html.DisplayFor(model => model.GiaGoc)</dd>
+
+            <dt>Giá giảm</dt>
+            <dd>@Html.DisplayFor(model => model.GiaGiam)</dd>
+
+            <dt>Số lượng bán</dt>
+            <dd>@Html.DisplayFor(model => model.SLBan)</dd>
+
+            <dt>Mã thương hiệu</dt>
+            <dd>@Html.DisplayFor(model => model.MaTH)</dd>
+
+            <dt>Loại sản phẩm</dt>
+            <dd>@Html.DisplayFor(model => model.CatID)</dd>
+
+            <dt>Mã đánh giá</dt>
+            <dd>@Html.DisplayFor(model => model.maDanhgia)</dd>
+
+            <dt>Mã size</dt>
+            <dd>@Html.DisplayFor(model => model.maSize)</dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-danger" style=" padding: 1em 2em;" /> |
+                @Html.ActionLink("Quay về", "Index", null, new { @class = "btn btn-dark" })
+            </div>
+        }
+    </div>
 </div>

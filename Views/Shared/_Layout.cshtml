@@ -1,4 +1,8 @@
 ﻿@*@model BanGiay.Models.ViewModel*@
+@{
+    var userName = Session["UserName"] as string;
+}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,27 +36,19 @@
             <div class="header-top mobile-hide">
                 <div class="container">
                     <div class="wrapper flexitem">
-                        @*<div class="left">
-                            <ul class="flexitem main-links">
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Feature Products</a></li>
-                                <li><a href="#">Wishlist</a></li>
-                            </ul>
-                        </div>*@
                         <div class="right">
                             <ul class="flexitem main-links">
-                                <li><a href="LogNRes.html">Đăng nhập / Đăng kí</a></li>
-                                @*<li><a href="LogNRes.html">Tài khoản của tôi</a></li>*@
-                                <!--<li><a href="#">Order Tracking</a></li>-->
-                                @*<li>
-                                    <a href="#">USD <span class="icon-small"><i class="ri-arrow-down-s-line"></i></span></a>
-                                    <ul>
-                                        <li class="current"><a href="#">USD</a></li>
-                                        <li><a href="#">DEM</a></li>
-                                        <li><a href="#">VND</a></li>
-                                        <li><a href="#">JPY</a></li>
-                                    </ul>
-                                </li>*@
+                                @if (string.IsNullOrEmpty(userName))
+                                {
+                                    <li><a href="@Url.Action("Login", "Home")">Đăng nhập</a></li>
+                                    <li><a href="@Url.Action("Register", "Home")">Đăng ký</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#">Xin chào, @Session["UserName"].ToString()</a></li>
+                                    <li><a href="javascript:void(0);" onclick="showLogoutDialog()">Đăng xuất</a></li>
+                                }
+                                <li><a href="LogNRes.html">Tài khoản của tôi</a></li>
                                 <li>
                                     <a href="#">Tiếng Việt<span class="icon-small"><i class="ri-arrow-down-s-line"></i></span></a>
                                     <ul>
@@ -120,7 +116,7 @@
                                                     </div>
                                                     <div class=" flexcol">
                                                         <div class="row">
-                                                            <h4>Top Brands</h4>
+                                                            <h4>Thương hiệu</h4>
                                                             <ul class="women-brands">
                                                                 <li><a href="#">Nike</a></li>
                                                                 <li><a href="#">Adidas</a></li>
@@ -130,7 +126,7 @@
                                                                 <li><a href="#">Balenciaga</a></li>
                                                                 <li><a href="#">Fendi</a></li>
                                                             </ul>
-                                                            <a href="#" class="view-all">View all brands <i class="ri-arrow-right-line"></i></a>
+                                                            <a href="#" class="view-all">Xem tất cả thương hiệu<i class="ri-arrow-right-line"></i></a>
                                                         </div>
                                                     </div>
                                                     <div class="flexcol products">
@@ -143,8 +139,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="text-content">
-                                                                <h4>Most wanted !</h4>
-                                                                <a href="#" class="primary-button">Order Now</a>
+                                                                <h4>Bán chạy nhất!</h4>
+                                                                <a href="#" class="primary-button">Mua Ngay!</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -152,13 +148,13 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="#">Tài khoản của tôi</a></li>
                                     <li>
                                         <a href="#">
                                             Tất cả sản phẩm
                                             <div class="fly-item"><span>Mới</span></div>
                                         </a>
                                     </li>
+
                                 </ul>
                             </nav>
                         </div>
@@ -221,8 +217,8 @@
                                                         <h4><a href="#">SHOP</a></h4>
                                                         <ul>
                                                             @*@foreach(var item in Model.Category.Take(4)) {
-                                                                <li><a href="#">@item.NameCate</a></li> 
-                                                             }*@
+                                                                   <li><a href="#">@item.NameCate</a></li>
+                                                                }*@
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -270,7 +266,9 @@
 
 
 
-        @RenderBody()
+
+            @RenderBody()
+   
 
 
 
@@ -441,6 +439,26 @@
 
         <div class="overlay"></div>
     </div>
+
+
     <script src="~/Scripts/js/Script1.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        var logoutDialogShown = false; // Biến để kiểm tra đã hiển thị hộp thoại hay chưa
+
+        function showLogoutDialog() {
+            if (!logoutDialogShown) {
+                logoutDialogShown = true;
+                if (confirm("Bạn có muốn đăng xuất?")) {
+                    window.location.href = '@Url.Action("Logout", "Home")'; 
+                } else {
+                    logoutDialogShown = false; // Reset lại biến nếu người dùng không đồng ý đăng xuất
+                }
+            }
+        }
+    </script>
 </body>
 </html>

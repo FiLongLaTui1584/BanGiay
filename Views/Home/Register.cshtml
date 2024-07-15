@@ -1,0 +1,78 @@
+﻿@model BanGiay.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Đăng ký";
+}
+
+<div class="container">
+    <h2>Đăng ký</h2>
+    @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { id = "registerForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.TenTK)
+            @Html.TextBoxFor(m => m.TenTK, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.TenTK, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.SDT)
+            @Html.TextBoxFor(m => m.SDT, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.SDT, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.diaChi)
+            @Html.TextBoxFor(m => m.diaChi, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.diaChi, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ngaySinh)
+            @Html.TextBoxFor(m => m.ngaySinh, "{0:dd/MM/yyyy}", new { @class = "form-control", type = "date" })
+            @Html.ValidationMessageFor(m => m.ngaySinh, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Pass)
+            @Html.PasswordFor(m => m.Pass, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Pass, "", new { @class = "text-danger" })
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng ký</button>
+    }
+
+
+
+
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            $(function () {
+                $('#registerForm').submit(function (event) {
+                    event.preventDefault();
+
+                    $.ajax({
+                        url: '@Url.Action("Register", "Home")',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            if (response.success) {
+                                alert(response.message);
+                                window.location.href = '@Url.Action("Login", "Home")'; // Chuyển đến trang đăng nhập
+                            } else {
+                                alert(response.message);
+                            }
+                        },
+                        error: function () {
+                            alert('Đã xảy ra lỗi khi đăng ký.');
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+</div>

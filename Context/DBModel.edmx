@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CNPMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CNPMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CatID" />
@@ -104,6 +104,8 @@
           <Property Name="TenTK" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Pass" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="diaChi" Type="nvarchar" MaxLength="100" />
+          <Property Name="ngaySinh" Type="date" />
         </EntityType>
         <Association Name="FK__ChiTietHo__maHoa__5070F446">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
@@ -292,8 +294,7 @@
             <End Role="SPYeuThich" EntitySet="SPYeuThich" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CNPMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -418,6 +419,8 @@
           <NavigationProperty Name="DanhGias" Relationship="Self.FK__DanhGia__maUser__3F466844" FromRole="Users" ToRole="DanhGia" />
           <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__maUser__4CA06362" FromRole="Users" ToRole="HoaDon" />
           <NavigationProperty Name="SPYeuThiches" Relationship="Self.FK__SPYeuThic__maUse__48CFD27E" FromRole="Users" ToRole="SPYeuThich" />
+          <Property Name="diaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ngaySinh" Type="DateTime" Precision="0" />
         </EntityType>
         <Association Name="FK__SanPham__CatID__4316F928">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
@@ -712,6 +715,8 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="CNPMModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+                <ScalarProperty Name="diaChi" ColumnName="diaChi" />
                 <ScalarProperty Name="maUser" ColumnName="maUser" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />

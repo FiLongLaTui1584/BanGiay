@@ -28,6 +28,8 @@ namespace BanGiay.Context
         public string TenTK { get; set; }
         public string Pass { get; set; }
         public string Email { get; set; }
+        public string diaChi { get; set; }
+        public Nullable<System.DateTime> ngaySinh { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhGia> DanhGias { get; set; }

@@ -1,0 +1,28 @@
+﻿@model BanGiay.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Đăng nhập</h2>
+
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+     {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Pass)
+            @Html.PasswordFor(m => m.Pass, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Pass)
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+     }
+</div>

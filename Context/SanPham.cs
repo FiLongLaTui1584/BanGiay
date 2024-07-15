@@ -52,7 +52,6 @@ namespace BanGiay.Context
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SPYeuThich> SPYeuThiches { get; set; }
 
-
         [NotMapped]
         public System.Web.HttpPostedFileBase UpLoadHinhAnh1 { get; set; }
         public System.Web.HttpPostedFileBase UpLoadHinhAnh2 { get; set; }

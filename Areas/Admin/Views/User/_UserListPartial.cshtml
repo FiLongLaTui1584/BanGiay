@@ -1,0 +1,31 @@
+﻿@model IEnumerable<BanGiay.Context.User>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã người dùng</th>
+            <th>Tên tài khoản</th>
+            <th>Số điện thoại</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+            <th>Ngày sinh</th>
+            <th>Quản trị</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.maUser</td>
+                <td>@user.TenTK</td>
+                <td>@user.SDT</td>
+                <td>@user.Email</td>
+                <td>@user.diaChi</td>
+                <td>@user.ngaySinh</td>
+                <td>@(user.isAdmin ? "Có" : "Không")</td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+

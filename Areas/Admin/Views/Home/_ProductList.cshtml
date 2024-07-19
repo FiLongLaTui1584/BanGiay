@@ -1,0 +1,19 @@
+﻿
+@model IEnumerable<BanGiay.Context.SanPham>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.maSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenSP)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id = item.maSP }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.maSP }, new { @class = "btn btn-dark" }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.maSP }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}

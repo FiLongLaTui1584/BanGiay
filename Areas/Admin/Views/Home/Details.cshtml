@@ -27,22 +27,15 @@
         text-align: center;
     }
 
-    .table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 1.5em;
-        border-radius: 20px;
+    dl {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 10px 20px;
+        margin-bottom: 20px;
     }
 
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-
-    th {
-        background-color: #808080;
-        color: var(--white-color);
+    dt {
+        font-weight: bold;
     }
 
     .btn {
@@ -73,72 +66,58 @@
 
         <hr />
 
-        <table>
-            <tr>
-                <th>Mã sản phẩm</th>
-                <td>@Html.DisplayFor(model => model.maSP)</td>
-            </tr>
-            <tr>
-                <th>Tên sản phẩm</th>
-                <td>@Html.DisplayFor(model => model.tenSP)</td>
-            </tr>
-            <tr>
-                <th>Tình trạng sản phẩm</th>
-                <td>@Html.DisplayFor(model => model.TinhTrangSP)</td>
-            </tr>
-            <tr>
-                <th>Màu sắc</th>
-                <td>@Html.DisplayFor(model => model.MauSac)</td>
-            </tr>
-            <tr>
-                <th>Hình ảnh 1</th>
-                <td>@Html.DisplayFor(model => model.HinhAnh1)</td>
-            </tr>
-            <tr>
-                <th>Hình ảnh 2</th>
-                <td>@Html.DisplayFor(model => model.HinhAnh2)</td>
-            </tr>
-            <tr>
-                <th>Hình ảnh 3</th>
-                <td>@Html.DisplayFor(model => model.HinhAnh3)</td>
-            </tr>
-            <tr>
-                <th>Hình ảnh 4</th>
-                <td>@Html.DisplayFor(model => model.HinhAnh4)</td>
-            </tr>
-            <tr>
-                <th>Mô tả sản phẩm</th>
-                <td>@Html.DisplayFor(model => model.MoTaSP)</td>
-            </tr>
-            <tr>
-                <th>Giá gốc</th>
-                <td>@Html.DisplayFor(model => model.GiaGoc)</td>
-            </tr>
-            <tr>
-                <th>Giá giảm</th>
-                <td>@Html.DisplayFor(model => model.GiaGiam)</td>
-            </tr>
-            <tr>
-                <th>Số lượng bán</th>
-                <td>@Html.DisplayFor(model => model.SLBan)</td>
-            </tr>
-            <tr>
-                <th>Mã thương hiệu</th>
-                <td>@Html.DisplayFor(model => model.MaTH)</td>
-            </tr>
-            <tr>
-                <th>Loại sản phẩm</th>
-                <td>@Html.DisplayFor(model => model.CatID)</td>
-            </tr>
-            <tr>
-                <th>Mã đánh giá</th>
-                <td>@Html.DisplayFor(model => model.maDanhgia)</td>
-            </tr>
-            <tr>
-                <th>Mã size</th>
-                <td>@Html.DisplayFor(model => model.maSize)</td>
-            </tr>
-        </table>
+        <dl style="margin-top:20px">
+            <dt>Mã sản phẩm</dt>
+            <dd>@Html.DisplayFor(model => model.maSP)</dd>
+
+            <dt>Tên sản phẩm</dt>
+            <dd>@Html.DisplayFor(model => model.tenSP)</dd>
+
+            <dt>Tình trạng sản phẩm</dt>
+            <dd>@Html.DisplayFor(model => model.TinhTrangSP)</dd>
+
+            <dt>Màu sắc</dt>
+            <dd>@Html.DisplayFor(model => model.MauSac)</dd>
+
+            <dt>Hình ảnh 1</dt>
+            <dd>@Html.DisplayFor(model => model.HinhAnh1)</dd>
+
+            <dt>Hình ảnh 2</dt>
+            <dd>@Html.DisplayFor(model => model.HinhAnh2)</dd>
+
+            <dt>Hình ảnh 3</dt>
+            <dd>@Html.DisplayFor(model => model.HinhAnh3)</dd>
+
+            <dt>Hình ảnh 4</dt>
+            <dd>@Html.DisplayFor(model => model.HinhAnh4)</dd>
+
+            <dt>Mô tả sản phẩm</dt>
+            <dd>@Html.DisplayFor(model => model.MoTaSP)</dd>
+
+            <dt>Giá gốc</dt>
+            <dd>@Html.DisplayFor(model => model.GiaGoc)</dd>
+
+            <dt>Giá giảm</dt>
+            <dd>@Html.DisplayFor(model => model.GiaGiam)</dd>
+
+            <dt>Số lượng bán</dt>
+            <dd>@Html.DisplayFor(model => model.SLBan)</dd>
+
+            <dt>Thương hiệu</dt>
+            <dd>@Html.DisplayFor(model => model.MaTH)</dd>
+
+            <dt>Loại sản phẩm</dt>
+            <dd>@Html.DisplayFor(model => model.CatID)</dd>
+
+            <dt>Mã đánh giá</dt>
+            <dd>@Html.DisplayFor(model => model.maDanhgia)</dd>
+
+            <dt>Mã size</dt>
+            <dd>@Html.DisplayFor(model => model.maSize)</dd>
+
+            <dt>Giảm giá</dt>
+            <dd>@Html.DisplayFor(model => model.giamGia)</dd>
+        </dl>
 
         <p style="margin-top:20px">
             @Html.ActionLink("Sửa", "Edit", new { id = Model.maSP }, new { @class = "btn btn-success" }) |

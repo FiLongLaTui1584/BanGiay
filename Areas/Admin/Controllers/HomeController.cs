@@ -20,6 +20,17 @@ namespace BanGiay.Areas.Admin.Controllers
         }
 
 
+        //************************************************SEARCH SẢN PHẨM***********************************************// 
+        public ActionResult Search(string query)
+        {
+            var listSP = database.SanPhams
+                .Where(sp => sp.tenSP.Contains(query))
+                .ToList();
+
+            return PartialView("_ProductList", listSP);
+        }
+
+
 
 
         //************************************************TẠO SẢN PHẨM***********************************************// 

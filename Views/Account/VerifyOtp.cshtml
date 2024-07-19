@@ -1,10 +1,9 @@
-﻿@model BanGiay.Models.LoginViewModel
+﻿@model BanGiay.Models.VerifyOtpViewModel
 
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Xác nhận mã OTP";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
 
 <style>
@@ -76,38 +75,38 @@
         margin-top: 0.5em;
         font-size: 1.2em;
     }
-</style>
 
+    .forgot-password-link {
+        margin-top: 1em;
+        text-align: center;
+    }
+
+        .forgot-password-link a {
+            color: #453c5c;
+            text-decoration: none;
+        }
+</style>
 
 
 <div class="container1">
     <div class="checkout">
         <div class="item left styled">
-            <h1>Đăng nhập</h1>
-
-
-            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+            <h1>Xác nhận mã OTP</h1>
+            @using (Html.BeginForm("VerifyOtp", "Account", FormMethod.Post, new { id = "verifyOtpForm" }))
             {
                 @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 <div class="form-group">
                     <p>
-                        <h4 style="margin-bottom:0.5em;">Nhập email của bạn: </h4>
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control input" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        <h4 style="margin-bottom:0.5em;">Nhập mã OTP của bạn: </h4>
+                        @Html.TextBoxFor(m => m.Otp, new { @class = "form-control input" })
+                        @Html.ValidationMessageFor(m => m.Otp, "", new { @class = "text-danger" })
                     </p>
                 </div>
-                <div class="form-group">
-                    <p>
-                        <h4 style="margin-bottom:0.5em;">Nhập mật khẩu của bạn: </h4>
-                        @Html.PasswordFor(m => m.Pass, new { @class = "form-control input" })
-                        @Html.ValidationMessageFor(m => m.Pass, "", new { @class = "text-danger" })
-                    </p>
-                </div>
-
 
                 <div class="primary-checkout">
-                    <button type="submit" class="primary-button">Đăng nhập</button>
+                    <button type="submit" class="primary-button">Xác nhận</button>
                 </div>
             }
         </div>

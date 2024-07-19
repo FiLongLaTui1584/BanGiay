@@ -14,7 +14,7 @@ namespace BanGiay.Models
 
         [Required(ErrorMessage = "Số điện thoại là bắt buộc")]
         [Display(Name = "Số điện thoại")]
-        [RegularExpression(@"^\d{10}$", ErrorMessage = "Số điện thoại không hợp lệ")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Số điện thoại không hợp lệ, Phải gồm 10 số trở lên và không chứa ký tự đặc biệt")]
         [Remote("IsPhoneNumberAvailable", "Home", HttpMethod = "POST", ErrorMessage = "Số điện thoại đã tồn tại")]
         public string SDT { get; set; }
 

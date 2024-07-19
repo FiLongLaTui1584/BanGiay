@@ -80,11 +80,11 @@
                     <div class="sectop flexitem">
                         <h2><span class="circle"></span><span>SẢN PHẨM NỔI BẬT</span></h2>
                         <div class="second-links">
-                            <a href="#" class="view-all">Xem tất cả<i class="ri-arrow-right-line"></i></a>
+                            <a href="@Url.Action("Viewall", "Home")" class="view-all">Xem tất cả<i class="ri-arrow-right-line"></i></a>
                         </div>
                     </div>
                     <div class="products main flexwrap">
-                        @foreach(var item in Model.SanPham) {
+                        @foreach(var item in Model.SanPham.Take(6)) {
                             <div class="item">
                                 <div class="media">
                                     <div class="thumbnail object-cover">

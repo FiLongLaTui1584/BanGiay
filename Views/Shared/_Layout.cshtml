@@ -40,8 +40,8 @@
                             <ul class="flexitem main-links">
                                 @if (string.IsNullOrEmpty(userName))
                                 {
-                                    <li><a href="@Url.Action("Login", "Home")">Đăng nhập</a></li>
-                                    <li><a href="@Url.Action("Register", "Home")">Đăng ký</a></li>
+                                    <li><a href="@Url.Action("Login", "Account")">Đăng nhập</a></li>
+                                    <li><a href="@Url.Action("Register", "Account")">Đăng ký</a></li>
                                 }
                                 else
                                 {
@@ -217,8 +217,8 @@
                                                         <h4><a href="#">CỬA HÀNG</a></h4>
                                                         <ul>
                                                             @*@foreach(var item in Model.Category.Take(4)) {
-                                                                   <li><a href="#">@item.NameCate</a></li>
-                                                                }*@
+                                               <li><a href="#">@item.NameCate</a></li>
+                                            }*@
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -248,9 +248,9 @@
                         </div>
                         <div class="right">
                             <div class="search-box">
-                                <form action="" class="search">
+                                <form action="@Url.Action("Search", "Home")" method="get" class="search">
                                     <span class="icon-large"><i class="ri-search-line"></i></span>
-                                    <input type="search" placeholder="Tìm kiếm sản phẩm" />
+                                    <input type="search" name="query" placeholder="Tìm kiếm sản phẩm" />
                                     <button type="submit">Tìm</button>
                                 </form>
                             </div>
@@ -452,7 +452,7 @@
             if (!logoutDialogShown) {
                 logoutDialogShown = true;
                 if (confirm("Bạn có muốn đăng xuất?")) {
-                    window.location.href = '@Url.Action("Logout", "Home")'; 
+                    window.location.href = '@Url.Action("Logout", "Account")'; 
                 } else {
                     logoutDialogShown = false; // Reset lại biến nếu người dùng không đồng ý đăng xuất
                 }

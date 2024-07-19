@@ -1,237 +1,203 @@
-﻿
+﻿@model BanGiay.Models.Cart
+
 @{
     ViewBag.Title = "CartPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <main>
-    <div class="single-cart">
-        <div class="container">
-            <div class="wrapper">
-                <div class="breadcrumb">
-                    <ul class="flexitem">
-                        <li><a href="#">Home</a></li>
-                        <li>Cart</li>
-                    </ul>
-                </div>
-                <div class="page-title" style="margin-bottom:2em">
-                    <h1>Shopping Cart</h1>
-                </div>
-                <div class="products one cart">
-                    <div class="flexwrap">
-
-                        <form action="" class="form-cart">
-                            <div class="item">
-                                <table id="cart-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Item</th>
-                                            <th>Price</th>
-                                            <th>Qty</th>
-                                            <th>Subtotal</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
+    @if (Model != null)
+    {
+        <div class="single-cart">
+            <div class="container">
+                <div class="wrapper">
+                    <div class="breadcrumb">
+                        <ul class="flexitem">
+                            <li><a href="\">Home</a></li>
+                            <li>Cart</li>
+                        </ul>
+                    </div>
+                    <div class="page-title" style="margin-bottom:2em">
+                        <h1>Shopping Cart</h1>
+                    </div>
 
 
 
+                    <div class="products one cart">
 
-                                    <tbody>
-
-
-
-                                        <tr>
-                                            <td class="flexitem">
-                                                <div class="thumbnail object-cover">
-                                                    <a href="#"><img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/47f1be7a-8cc2-4fbb-acfc-28212e7a8056/air-jordan-i-high-g-golf-shoes-qKzTBg.png" /></a>
-                                                </div>
-                                                <div class="content">
-                                                    <strong><a href="#">Air Jordan I High G</a></strong>
-                                                    <p>Color: Gold</p>
-                                                </div>
-                                            </td>
-                                            <td>5,279,000₫</td>
-                                            <td>
-                                                <div class="qty-control flexitem">
-                                                    <button class="minus">-</button>
-                                                    <input type="text" value="2" min="1" />
-                                                    <button class="plus">+</button>
-                                                </div>
-                                            </td>
-                                            <td>7,279,000₫</td>
-                                            <td><a href="#" class="item-remove"><i class="ri-close-line"></i></a></td>
-                                        </tr>
+                        <div class="flexwrap">
 
 
-                                        <tr>
-                                            <td class="flexitem">
-                                                <div class="thumbnail object-cover">
-                                                    <a href="#"><img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/47f1be7a-8cc2-4fbb-acfc-28212e7a8056/air-jordan-i-high-g-golf-shoes-qKzTBg.png" /></a>
-                                                </div>
-                                                <div class="content">
-                                                    <strong><a href="#">Air Jordan I High G</a></strong>
-                                                    <p>Color: Gold</p>
-                                                </div>
-                                            </td>
-                                            <td>5,279,000₫</td>
-                                            <td>
-                                                <div class="qty-control flexitem">
-                                                    <button class="minus">-</button>
-                                                    <input type="text" value="2" min="1" />
-                                                    <button class="plus">+</button>
-                                                </div>
-                                            </td>
-                                            <td>7,279,000₫</td>
-                                            <td><a href="#" class="item-remove"><i class="ri-close-line"></i></a></td>
-                                        </tr>
+                            <form action="" class="form-cart">
+
+                                <div class="item">
+
+                                    <table id="cart-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>Price</th>
+                                                <th>Qty</th>
+                                                <th>Subtotal</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 
 
-                                        <tr>
-                                            <td class="flexitem">
-                                                <div class="thumbnail object-cover">
-                                                    <a href="#"><img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/47f1be7a-8cc2-4fbb-acfc-28212e7a8056/air-jordan-i-high-g-golf-shoes-qKzTBg.png" /></a>
-                                                </div>
-                                                <div class="content">
-                                                    <strong><a href="#">Air Jordan I High G</a></strong>
-                                                    <p>Color: Gold</p>
-                                                </div>
-                                            </td>
-                                            <td>5,279,000₫</td>
-                                            <td>
-                                                <div class="qty-control flexitem">
-                                                    <button class="minus">-</button>
-                                                    <input type="text" value="2" min="1" />
-                                                    <button class="plus">+</button>
-                                                </div>
-                                            </td>
-                                            <td>7,279,000₫</td>
-                                            <td><a href="#" class="item-remove"><i class="ri-close-line"></i></a></td>
-                                        </tr>
-
-
-                                        <tr>
-                                            <td class="flexitem">
-                                                <div class="thumbnail object-cover">
-                                                    <a href="#"><img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/47f1be7a-8cc2-4fbb-acfc-28212e7a8056/air-jordan-i-high-g-golf-shoes-qKzTBg.png" /></a>
-                                                </div>
-                                                <div class="content">
-                                                    <strong><a href="#">Air Jordan I High G</a></strong>
-                                                    <p>Color: Gold</p>
-                                                </div>
-                                            </td>
-                                            <td>5,279,000₫</td>
-                                            <td>
-                                                <div class="qty-control flexitem">
-                                                    <button class="minus">-</button>
-                                                    <input type="text" value="2" min="1" />
-                                                    <button class="plus">+</button>
-                                                </div>
-                                            </td>
-                                            <td>7,279,000₫</td>
-                                            <td><a href="#" class="item-remove"><i class="ri-close-line"></i></a></td>
-                                        </tr>
+                                            @foreach (var item in Model.Items)
+                                            {
 
 
 
-                                    </tbody>
+                                                <tr>
+                                                    <td class="flexitem">
+                                                        <div class="thumbnail object-cover">
+                                                            <a href="#"><img src="@Url.Content("~/Content/Image/SanPham/" + item._shopping_product.HinhAnh1)" /></a>
+                                                        </div>
+                                                        <div class="content">
+                                                            <strong> @Html.DisplayFor(model => item._shopping_product.tenSP)</strong>
+                                                            <p>Color: @Html.DisplayFor(model => item._shopping_product.MauSac)</p>
+                                                        </div>
+                                                    </td>
+                                                    <td> @Html.DisplayFor(model => item._shopping_product.GiaGoc)</td>
+                                                    <td>
+
+
+                                                        <button class="minus">-</button>
+                                                        <input type="hidden" value="@item._shopping_product.maSP" name="ID_Product" />
+                                                        <input type="number" value="@item._shopping_quantity" min="1" name="Quantity" />
+                                                        <button class="plus">+</button>
+
+                                                    </td>
+                                                    <td></td>
+                                                    <td><a href="#" class="item-remove"><i class="ri-close-line"></i></a></td>
+                                                </tr>
+
+
+                                            }
+
+                                        </tbody>
 
 
 
+                                    </table>
 
-
-                                </table>
-                            </div>
-                        </form>
-
-
-                        <div class="cart-summary styled">
-                            <div class="item">
-                                <div class="coupon">
-                                    <input type="text" placeholder="Enter coupon" />
-                                    <button>Apply</button>
                                 </div>
-                                <div class="shipping-rate collapse">
-                                    <div class="has-child expand">
-                                        <a href="#" class="icon-small">Estimate Shipping and Tax</a>
-                                        <div class="content">
-                                            <div class="countries">
-                                                <form action="">
-                                                    <label for="country">Country</label>
-                                                    <select name="country" id="country">
-                                                        <option value=""></option>
-                                                        <option value="1" selected="selected">VietNam</option>
-                                                        <option value="2">United States</option>
-                                                        <option value="3">Germany</option>
-                                                        <option value="4">Japan</option>
-                                                    </select>
-                                                </form>
-                                            </div>
-                                            <div class="states">
-                                                <form action="">
-                                                    <label for="state">State/Province</label>
-                                                    <select name="state" id="state">
-                                                        <option value="">Select a region or state</option>
-                                                        <option value="1" selected="selected">VietNam</option>
-                                                        <option value="2">United State</option>
-                                                        <option value="3">Germany</option>
-                                                        <option value="4">Japan</option>
-                                                    </select>
-                                                </form>
-                                            </div>
-                                            <div class="postal-code">
-                                                <form action="">
-                                                    <label for="postal">Zip/Postal Code</label>
-                                                    <input type="number" name="postal" id="postal" />
-                                                </form>
-                                            </div>
-                                            <div class="rate-options variant">
-                                                <form action="">
-                                                    <p>
-                                                        <span>Flat: 200.000đ</span>
-                                                        <input type="radio" name="rate-option" id="flat" checked />
-                                                        <label for="flat" class="circle"></label>
-                                                    </p>
-                                                    <p>
-                                                        <span>Best: 0.000đ</span>
-                                                        <input type="radio" name="rate-option" id="best" />
-                                                        <label for="best" class="circle"></label>
-                                                    </p>
-                                                </form>
+
+                            </form>
+
+                            <div class="cart-summary styled">
+                                <div class="item">
+                                    <div class="coupon">
+                                        <input type="text" placeholder="Enter coupon" />
+                                        <button>Apply</button>
+                                    </div>
+                                    <div class="shipping-rate collapse">
+                                        <div class="has-child expand">
+                                            <a href="#" class="icon-small">Estimate Shipping and Tax</a>
+                                            <div class="content">
+                                                <div class="countries">
+                                                    <form action="">
+                                                        <label for="country">Country</label>
+                                                        <select name="country" id="country">
+                                                            <option value=""></option>
+                                                            <option value="1" selected="selected">VietNam</option>
+                                                            <option value="2">United States</option>
+                                                            <option value="3">Germany</option>
+                                                            <option value="4">Japan</option>
+                                                        </select>
+                                                    </form>
+                                                </div>
+                                                <div class="states">
+                                                    <form action="">
+                                                        <label for="state">State/Province</label>
+                                                        <select name="state" id="state">
+                                                            <option value="">Select a region or state</option>
+                                                            <option value="1" selected="selected">VietNam</option>
+                                                            <option value="2">United State</option>
+                                                            <option value="3">Germany</option>
+                                                            <option value="4">Japan</option>
+                                                        </select>
+                                                    </form>
+                                                </div>
+                                                <div class="postal-code">
+                                                    <form action="">
+                                                        <label for="postal">Zip/Postal Code</label>
+                                                        <input type="number" name="postal" id="postal" />
+                                                    </form>
+                                                </div>
+                                                <div class="rate-options variant">
+                                                    <form action="">
+                                                        <p>
+                                                            <span>Flat: 200.000đ</span>
+                                                            <input type="radio" name="rate-option" id="flat" checked />
+                                                            <label for="flat" class="circle"></label>
+                                                        </p>
+                                                        <p>
+                                                            <span>Best: 0.000đ</span>
+                                                            <input type="radio" name="rate-option" id="best" />
+                                                            <label for="best" class="circle"></label>
+                                                        </p>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="cart-total">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <th>Subtotal</th>
-                                                <td>10.000.000đ</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Discount</th>
-                                                <td>-1.000.000đ</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Shippinhg <span class="mini-text">(Flat)</span></th>
-                                                <td>900.000đ</td>
-                                            </tr>
-                                            <tr class="grand-total">
-                                                <th>TOTAL</th>
-                                                <td><strong>11.000.000đ</strong></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <a href="Checkout.html" class="secondary-button">Checkout</a>
+                                    <div class="cart-total">
+
+
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>Subtotal</th>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Discount</th>
+                                                    <td></td>
+                                                </tr>
+                                                <tr class="grand-total">
+                                                    <th>TOTAL</th>
+                                                    <td><strong>000</strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <a href="Checkout.html" class="secondary-button">Checkout</a>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </div>
-    </div>
+    }
 
+    }
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const minusButton = document.querySelector('.minus');
+            const plusButton = document.querySelector('.plus');
+            const inputField = document.querySelector('input[type="number"]');
+
+            minusButton.addEventListener('click', function () {
+                let currentValue = parseInt(inputField.value);
+                if (currentValue > 1) {
+                    inputField.value = currentValue - 1;
+                }
+            });
+
+            plusButton.addEventListener('click', function () {
+                let currentValue = parseInt(inputField.value);
+                inputField.value = currentValue + 1;
+            });
+        });
+    </script>
 
 </main>
-<!-----------------------main---------------------->
+

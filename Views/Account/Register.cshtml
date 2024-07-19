@@ -1,0 +1,172 @@
+﻿@model BanGiay.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Đăng ký";
+}
+
+
+<style>
+    .container1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .checkout {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin:3em 0;
+        width: 100%;
+    }
+
+        .checkout .left.styled {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+
+    form p {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1em;
+    }
+
+    .checkout .left h1 {
+        font-weight: bold;
+        margin-bottom: 0.5em;
+    }
+
+    .form-control.input {
+        width: 350px;
+    }
+
+    .primary-checkout {
+        display: flex;
+        justify-content: center;
+    }
+
+    .primary-button {
+        display: block;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+        width: 300px;
+        font-size: 1.2em;
+        padding: 0.5em 0;
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        text-align: center;
+    }
+    .primary-checkout button {
+        display: block;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+        max-width: 350px;
+        margin-top: 0.5em;
+        font-size: 1.2em;
+    }
+</style>
+
+
+
+
+<div class="container1" >
+    <div class="checkout">
+        <div class="item left styled ">
+            <h1>Đăng ký tài khoản mới</h1>
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "registerForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    <p>
+                        <h4  style="margin-bottom:0.5em;">Nhập tên cho tài khoản của bạn: </h4>
+                        @Html.TextBoxFor(m => m.TenTK, new { @class = "form-control input" })
+                        @Html.ValidationMessageFor(m => m.TenTK, "", new { @class = "text-danger" })
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <p>
+                        <h4 style="margin-bottom:0.5em;">Nhập số điện thoại của bạn: </h4>
+                        @Html.TextBoxFor(m => m.SDT, new { @class = "form-control input" })
+                        @Html.ValidationMessageFor(m => m.SDT, "", new { @class = "text-danger" })
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <p>
+                        <h4 style="margin-bottom:0.5em;">Nhập địa chỉ của bạn: </h4>
+                        @Html.TextBoxFor(m => m.diaChi, new { @class = "form-control input" })
+                        @Html.ValidationMessageFor(m => m.diaChi, "", new { @class = "text-danger" })
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <p>
+                        <h4 style="margin-bottom:0.5em;">Nhập ngày sinh của bạn: </h4>
+                        @Html.TextBoxFor(m => m.ngaySinh, "{0:dd/MM/yyyy}", new { @class = "form-control input", type = "date" })
+                        @Html.ValidationMessageFor(m => m.ngaySinh, "", new { @class = "text-danger" })
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <p>
+                        <h4 style="margin-bottom:0.5em;">Nhập email của bạn: </h4>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control input" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <p>
+                        <h4 style="margin-bottom:0.5em;">Nhập password của bạn: </h4>
+                        @Html.PasswordFor(m => m.Pass, new { @class = "form-control input" })
+                        @Html.ValidationMessageFor(m => m.Pass, "", new { @class = "text-danger" })
+                    </p>
+                </div>
+
+                <div class="primary-checkout">
+                    <button type="submit" class="primary-button">Đăng ký</button>
+                </div>
+            }
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+                <script>
+                $(function () {
+                    $('#registerForm').submit(function (event) {
+                        event.preventDefault();
+
+                        $.ajax({
+                            url: '@Url.Action("Register", "Account")',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: $(this).serialize(),
+                            success: function (response) {
+                                if (response.success) {
+                                    alert(response.message);
+                                    window.location.href = '@Url.Action("Login", "Account")'; // Chuyển đến trang đăng nhập
+                                } else {
+                                    alert(response.message);
+                                }
+                            },
+                            error: function () {
+                                alert('Đã xảy ra lỗi khi đăng ký.');
+                            }
+                        });
+                    });
+                });
+                </script>
+            }
+        </div>
+    </div>
+</div>

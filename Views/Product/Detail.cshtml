@@ -113,11 +113,12 @@
                                     </div>
                                     <div class="actions">
                                         <div class="qty-control flexitem">
-                                            <button class="minus circle">-</button>
-                                            <input type="text" value="1">
-                                            <button class="plus circle">+</button>
+                                            <button class="minus circle" id="minusBtn">-</button>
+                                            <input type="text" value="1" id="quantityInput">
+                                            <button class="plus circle" id="plusBtn">+</button>
                                         </div>
-                                        <div class="button-cart"><button class="primary-button">Add to cart</button></div>
+
+                                        <div class="button-cart"><a href="~/CartPage/AddToCart/@Model.SanPham1.maSP"><button class="primary-button">Add to cart</button></a></div>
                                         <div class="wish-share">
                                             <ul class="flexitem second-links">
                                                 <li>

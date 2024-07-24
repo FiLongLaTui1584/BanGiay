@@ -20,16 +20,14 @@ namespace BanGiay.Context
             this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
         }
     
-        public int maHoaDon { get; set; }
-        public int SoLuong { get; set; }
-        public System.DateTime NgayMua { get; set; }
-        public double TongTien { get; set; }
-        public int maSP { get; set; }
-        public int maUser { get; set; }
+        public int maHD { get; set; }
+        public DateTime NgayDat { get; set; }
+        public Nullable<int> maUser { get; set; }
+        public string diaChi { get; set; }
+        public string TrangThai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
-        public virtual SanPham SanPham { get; set; }
         public virtual User User { get; set; }
     }
 }

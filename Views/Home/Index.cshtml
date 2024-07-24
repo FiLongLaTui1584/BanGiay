@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div class="products main flexwrap">
-                        @foreach(var item in Model.SanPham.Take(6)) {
+                        @foreach(var item in Model.SanPham.Take(9)) {
                             <div class="item">
                                 <div class="media">
                                     <div class="thumbnail object-cover">
@@ -116,8 +116,8 @@
                                     </div>
                                     <h3><a href="@Url.Action("Detail", "Product", new { maSP = item.maSP })">@item.tenSP</a></h3>
                                     <div class="price">
-                                        <span class="current">@item.GiaGiam₫</span>
-                                        <span class="normal mini-text">@item.GiaGoc₫</span>
+                                        <span class="current">@item.GiaGiam.ToString("#,##0").Replace(',', '.') VND</span>
+                                        <span class="normal mini-text">@item.GiaGoc.ToString("#,##0").Replace(',', '.') VND</span>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
 
 
     <!----------------BANNERS---------------->
-    <div class="banners">
+    <div class="banners" style="margin-top:200px">
         <div class="container">
             <div class="wrapper">
                 <div class="column">

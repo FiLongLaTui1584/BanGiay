@@ -42,27 +42,7 @@ function toggle(e) {
 
 
 
-//Tăng giảm số lượng detail
-document.addEventListener('DOMContentLoaded', (event) => {
-    // Lấy các phần tử bằng ID
-    const minusBtn = document.getElementById('minusBtn');
-    const plusBtn = document.getElementById('plusBtn');
-    const quantityInput = document.getElementById('quantityInput');
 
-    // Thêm sự kiện click cho nút trừ
-    minusBtn.addEventListener('click', () => {
-        let currentValue = parseInt(quantityInput.value);
-        if (currentValue > 1) {
-            quantityInput.value = currentValue - 1;
-        }
-    });
-
-    // Thêm sự kiện click cho nút cộng
-    plusBtn.addEventListener('click', () => {
-        let currentValue = parseInt(quantityInput.value);
-        quantityInput.value = currentValue + 1;
-    });
-});
 
 
 // Sờ lai đơ

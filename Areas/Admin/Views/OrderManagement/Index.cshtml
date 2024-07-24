@@ -1,7 +1,7 @@
-﻿@model IEnumerable<BanGiay.Context.User>
+﻿@model IEnumerable<BanGiay.Context.HoaDon>
 
 @{
-    ViewBag.Title = "Danh sách người dùng";
+    ViewBag.Title = "Quản lý đơn hàng";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,12 +13,12 @@
     }
 
     .menu {
-        width:245px;
         background-color: #f8f9fa;
         padding: 1em;
         box-shadow: 0 15px 70px -8px rgb(0 0 0 / 20%);
         border-radius: 10px;
         margin: 32px 0 32px 32px;
+        width:240px
     }
 
         .menu a {
@@ -84,6 +84,7 @@
         border-collapse: collapse;
         margin-bottom: 1.5em;
         border-radius: 20px;
+        margin-top:25px
     }
 
         .table th, .table td {
@@ -134,35 +135,51 @@
 
     <div class="content">
         <div class="styled">
-            <h2>Danh sách tài khoản</h2>
+            <h2>Quản lý đơn hàng</h2>
             <hr />
 
-            <div class="search-container">
-                @Html.ActionLink("Thêm người dùng", "Create", null, new { @class = "btn btn-success" })
-                <input type="text" id="searchBox" placeholder="Tìm kiếm người dùng..." />
-                <button type="button" onclick="searchUsers()">Tìm kiếm</button>
-            </div>
-
-            <div id="userList">
-                @Html.Partial("_UserListPartial", Model)
-            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mã Đơn</th>
+                        <th>Ngày Đặt</th>
+                        <th>Tên Người Mua</th>
+                        <th>Địa Chỉ</th>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                        <th>Tổng Tiền</th>
+                        <th>Trạng Thái</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        foreach (var detail in order.ChiTietHoaDons)
+                        {
+                            <tr>
+                                <td>@order.maHD</td>
+                                <td>@order.NgayDat.ToString("dd/MM/yyyy")</td>
+                                <td>@order.User.TenTK</td>
+                                <td>@order.diaChi</td>
+                                <td>@detail.SanPham.tenSP</td>
+                                <td>@detail.SoLuong</td>
+                                <td>@detail.GiaTien</td>
+                                <td>@(detail.GiaTien * detail.SoLuong)</td>
+                                <td>@order.TrangThai</td>
+                                <td>
+                                    @if (order.TrangThai == "Chờ xác nhận")
+                                    {
+                                        @Html.ActionLink("Xác nhận", "ConfirmOrder", new { id = order.maHD }, new { @class = "btn btn-success" })
+                                        @Html.ActionLink("Từ chối", "RejectOrder", new { id = order.maHD }, new { @class = "btn btn-danger" })
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-
-@section scripts {
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        function searchUsers() {
-            var query = $('#searchBox').val();
-            $.ajax({
-                url: '@Url.Action("Search", "User")',
-                type: 'GET',
-                data: { query: query },
-                success: function (data) {
-                    $('#userList').html(data);
-                }
-            });
-        }
-    </script>
-}

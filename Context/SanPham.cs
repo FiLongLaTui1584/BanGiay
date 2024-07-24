@@ -19,7 +19,6 @@ namespace BanGiay.Context
         public SanPham()
         {
             this.ChiTietHoaDons = new HashSet<ChiTietHoaDon>();
-            this.HoaDons = new HashSet<HoaDon>();
             this.SPYeuThiches = new HashSet<SPYeuThich>();
         }
     
@@ -45,8 +44,6 @@ namespace BanGiay.Context
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual DanhGia DanhGia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
         public virtual KichCo KichCo { get; set; }
         public virtual ThuongHieuSP ThuongHieuSP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

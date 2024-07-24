@@ -10,7 +10,7 @@ namespace BanGiay.Controllers
 {
     public class HomeController : Controller
     {
-        CNPMEntities1 objCNPMEntities = new CNPMEntities1();
+        CNPMEntities2 objCNPMEntities = new CNPMEntities2();
 
         public ActionResult Index()
         {

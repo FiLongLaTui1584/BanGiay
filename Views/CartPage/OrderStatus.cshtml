@@ -1,0 +1,85 @@
+﻿@model IEnumerable<BanGiay.Context.HoaDon>
+
+@{
+    ViewBag.Title = "Tình trạng đơn hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .container1 {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .styled {
+        padding: 2em;
+        box-shadow: 0 15px 70px -8px rgb(0 0 0 / 20%);
+        border-radius: 20px;
+        width: 100%;
+    }
+
+    h2 {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1.5em;
+        border-radius: 20px;
+        margin-top:25px
+    }
+
+        .table th, .table td {
+            border: 1px solid var(--border-color);
+            padding: 0.75em;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+</style>
+
+<div class="container1">
+    <div class="styled">
+        <h2>Tình trạng đơn hàng</h2>
+        <hr />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Mã Đơn</th>
+                    <th>Ngày Đặt</th>
+                    <th>Địa Chỉ</th>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                    <th>Tổng Tiền</th>
+                    <th>Trạng Thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    foreach (var detail in order.ChiTietHoaDons)
+                    {
+                        <tr>
+                            <td>@order.maHD</td>
+                            <td>@order.NgayDat.ToString("dd/MM/yyyy")</td>
+                            <td>@order.diaChi</td>
+                            <td>@detail.SanPham.tenSP</td>
+                            <td>@detail.SoLuong</td>
+                            <td>@detail.GiaTien</td>
+                            <td>@(detail.GiaTien * detail.SoLuong)</td>
+                            <td>@order.TrangThai</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

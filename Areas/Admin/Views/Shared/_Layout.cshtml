@@ -1,40 +1,454 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@*@model BanGiay.Models.ViewModel*@
+@{
+    var userName = Session["UserName"] as string;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>Đồ Án</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link href="~/Content/css/style.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Bán giày", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <div id="page" class="site">
+
+        <aside class="site-off desktop-hide">
+            <div class="off-canvas">
+                <div class="canvas-head flexitem">
+                    <div class="logo"><a href="\"><span class="circle"></span>.Nhóm 9</a></div>
+                    <a href="#" class="t-close flexcenter"><i class="ri-close-line"></i></a>
+                </div>
+                <div class="departments"></div>
+                <nav></nav>
+                <div class="thetop-nav"></div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+        </aside>
+
+        <header>
+            <!----------------HEADER-TOP--------------->
+            <div class="header-top mobile-hide">
+                <div class="container">
+                    <div class="wrapper flexitem">
+                        @*<div class="right">
+                            <ul class="flexitem main-links">
+                                @if (string.IsNullOrEmpty(userName))
+                                {
+                                    <li><a href="@Url.Action("Login", "Account")">Đăng nhập</a></li>
+                                    <li><a href="@Url.Action("Register", "Account")">Đăng ký</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="#">Xin chào, @Session["UserName"].ToString()</a></li>
+                                    <li><a href="javascript:void(0);" onclick="showLogoutDialog()">Đăng xuất</a></li>
+                                    <li><a href="LogNRes.html">Tài khoản của tôi</a></li>
+                                }
+                                <li>
+                                    <a href="#">Tiếng Việt<span class="icon-small"><i class="ri-arrow-down-s-line"></i></span></a>
+                                    <ul>
+                                        <li class="current"><a href="#">Tiếng Việt</a></li>
+                                        <li><a href="#">English</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+            <!----------------HEADER-NAV--------------->
+            <div class="header-nav">
+                <div class="container">
+                    <div class="wrapper flexitem">
+                        <a href="#" class="trigger desktop-hide"><span class="i ri-menu-2-line"></span> </a>
+                        <div class="left flexitem">
+                            <div class="logo"><a href="\"><span class="circle"></span>.Nhóm 9</a></div>
+                            <nav class="mobile-hide">
+                                <ul class="flexitem second-links">
+                                    <li class="has-child">
+                                        <a href="#">
+                                            Cửa hàng
+                                            <div class="icon-small"><i class="ri-arrow-down-s-line"></i></div>
+                                        </a>
+                                        <div class="mega">
+                                            <div class="container">
+                                                <div class="wrapper">
+                                                    <div class=" flexcol">
+                                                        <div class="row">
+                                                            <h4>Giày thể thao</h4>
+                                                            <ul>
+                                                                <li><a href="#">Chạy bộ</a></li>
+                                                                <li><a href="#">Gym</a></li>
+                                                                <li><a href="#">Bóng rổ</a></li>
+                                                                <li><a href="#">Bóng đá</a></li>
+                                                                <li><a href="#">Dép thể thao</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class=" flexcol">
+                                                        <div class="row">
+                                                            <h4>Giày Thời Trang</h4>
+                                                            <ul>
+                                                                <li><a href="#">Casual</a></li>
+                                                                <li><a href="#">Highend</a></li>
+                                                                <li><a href="#">Luxury</a></li>
+                                                                <li><a href="#">Designer</a></li>
+                                                                <li><a href="#">Slipper</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class=" flexcol">
+                                                        <div class="row">
+                                                            <h4>Giày Thời Trang</h4>
+                                                            <ul>
+                                                                <li><a href="#">Casual</a></li>
+                                                                <li><a href="#">Highend</a></li>
+                                                                <li><a href="#">Luxury</a></li>
+                                                                <li><a href="#">Designer</a></li>
+                                                                <li><a href="#">Slipper</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class=" flexcol">
+                                                        <div class="row">
+                                                            <h4>Thương hiệu</h4>
+                                                            <ul class="women-brands">
+                                                                <li><a href="#">Nike</a></li>
+                                                                <li><a href="#">Adidas</a></li>
+                                                                <li><a href="#">Vans</a></li>
+                                                                <li><a href="#">Crocs</a></li>
+                                                                <li><a href="#">Gucci</a></li>
+                                                                <li><a href="#">Balenciaga</a></li>
+                                                                <li><a href="#">Fendi</a></li>
+                                                            </ul>
+                                                            <a href="#" class="view-all">Xem tất cả thương hiệu<i class="ri-arrow-right-line"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flexcol products">
+                                                        <div class="row">
+                                                            <div class="media">
+                                                                <div class="thumbnail object-cover">
+                                                                    <a href="#">
+                                                                        <img src="https://th.bing.com/th/id/OIP.oY43kFpOr-PXNcIjD4y9eQAAAA?rs=1&pid=ImgDetMain" alt="" />
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-content">
+                                                                <h4>Bán chạy nhất!</h4>
+                                                                <a href="#" class="primary-button">Mua Ngay!</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Viewall","Home")">
+                                            Tất cả sản phẩm
+                                            <div class="fly-item"><span>Mới</span></div>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                        <!--<div class="right">
+                            <ul class="flexitem second-links">
+                                <li class="mobile-hide">
+                                    <a href="#">
+                                        <div class="icon-large"><i class="ri-heart-line"></i></div>
+                                        <div class="fly-item"><span class="item-number">0</span></div>
+                                    </a>
+                                </li>-->
+                                @*<li>
+                                    @Html.Action("BagCart", "CartPage")
+                                </li>*@
+                            <!--</ul>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+            <!----------------HEADER-MAIN--------------->
+            <div class="header-main mobile-hide">
+                <div class="container">
+                    <div class="wrapper flexitem">
+                        <div class="left">
+                            <div class="dpt-cat">
+                                <div class="dpt-head">
+                                    <div class="main-text">Tất cả danh mục</div>
+                                    <div class="mini-text mobile-hide">Tổng cộng 1002 sản phẩm</div>
+                                    <a href="#" class="dpt-trigger mobile-hide">
+                                        <i class="ri-menu-3-line ri-xl"></i>
+                                        <i class="ri-close-line ri-xl"></i>
+                                    </a>
+                                </div>
+                                <div class="dpt-menu">
+                                    <ul class="second-links">
+                                        <li>
+                                            <a href="#">
+                                                <div class="icon-large"><i class="ri-home-line"></i></div>
+                                                Trang chủ
+                                            </a>
+                                        </li>
+                                        <li class="has-child Shop">
+                                            <a href="#">
+                                                <div class="icon-large"><i class="ri-menu-line"></i></div>
+                                                Cửa hàng
+                                                <div class="icon-small"><i class="ri-arrow-right-s-line"></i></div>
+                                            </a>
+                                            <div class="mega">
+                                                <div class="flexcol">
+                                                    <div class="row">
+                                                        <h4><a href="#">CỬA HÀNG</a></h4>
+                                                        <ul>
+                                                            @*@foreach(var item in Model.Category.Take(4)) {
+                                                                   <li><a href="#">@item.NameCate</a></li>
+                                                                }*@
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="icon-large"><i class="ri-women-line"></i></div>
+                                                Nữ
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="icon-large"><i class="ri-men-line"></i></div>
+                                                Nam
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <div class="icon-large"><i class="ri-football-line"></i></div>
+                                                Trẻ em
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="search-box">
+                                <form action="@Url.Action("Search", "Home")" method="get" class="search">
+                                    <span class="icon-large"><i class="ri-search-line"></i></span>
+                                    <input type="search" name="query" placeholder="Tìm kiếm sản phẩm" />
+                                    <button type="submit">Tìm</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-----------------------header---------------------->
+
+
+
+
+
+
+
+        @RenderBody()
+
+
+
+
+
+
+
+
+        <footer>
+            <div class="newsletter">
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="box">
+                            <div class="content">
+                                <h3>Nhận thông báo</h3>
+                                <p>Nhập email của bạn để chúng tôi thông báo bạn khi có <strong>ưu đãi đặc biệt</strong></p>
+                            </div>
+                            <form action="" class="search">
+                                <span class="icon-large"><i class="ri-mail-line"></i></span>
+                                <input type="email" placeholder="Nhập email của bạn" required>
+                                <button type="submit">Đăng ký</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------newsletter------------------->
+
+            <div class="widgets">
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="flexwrap">
+                            <div class="row">
+                                <div class="item mini-links">
+                                    <h3 style="margin-bottom:20px;">Trợ giúp và liên hệ</h3>
+                                    <ul class="flexcol">
+                                        <li><a href="#">Tài khoản của bạn</a></li>
+                                        <li><a href="#">Đơn hàng của bạn</a></li>
+                                        <li><a href="#">Đánh giá vận chuyển</a></li>
+                                        <li><a href="#">Trợ giúp</a></li>
+                                        <li><a href="#">Hỗ trợ</a></li>
+                                        <li><a href="#">Liên hệ chúng tôi</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="item mini-links">
+                                    <h3 style="margin-bottom:20px;">Các danh mục sản phẩm</h3>
+                                    <ul class="flexcol">
+                                        <li><a href="#">Nữ</a></li>
+                                        <li><a href="#">Nam</a></li>
+                                        <li><a href="#">Thể thao</a></li>
+                                        <li><a href="#">Thương hiệu</a></li>
+                                        <li><a href="#">Thời trang</a></li>
+                                        <li><a href="#">Thể thao</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="item mini-links">
+                                    <h3 style="margin-bottom:20px;">Thông tin thanh toán</h3>
+                                    <ul class="flexcol">
+                                        <li><a href="#">Thẻ doanh nghiệp</a></li>
+                                        <li><a href="#">Tích điểm thưởng</a></li>
+                                        <li><a href="#">Tải lại chi tiêu</a></li>
+                                        <li><a href="#">Phương thức thanh toán</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="item mini-links">
+                                    <h3 style="margin-bottom:20px;">Về chúng tôi</h3>
+                                    <ul class="flexcol">
+                                        <li><a href="#">Thông tin công ty</a></li>
+                                        <li><a href="#">Tin tức</a></li>
+                                        <li><a href="#">Chính sách</a></li>
+                                        <li><a href="#">Đối tác</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---------------------widgets--------------------------->
+
+            <div class="footer-info">
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="flexcol">
+                            <div class="logo">
+                                <a inref=""><span class="circle"></span>.Nhóm 9</a>
+                            </div>
+                            <div class="socials">
+                                <ul class="flexitem">
+                                    <li><a href="#"><i class="ri-facebook-line"></i></a></li>
+                                    <li><a href="#"><i class="ri-instagram-line"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mini-text">Copyright 2024 @@.Nhóm 9. All right reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-----------------------footer---------------------->
+
+
+        <div class="menu-bottom desktop-hide">
+            <div class="container">
+                <div class="wrapper">
+                    <nav>
+                        <ul class="flexitem">
+                            <li>
+                                <a href="#">
+                                    <i class="ri-bar-chart-line"></i>
+                                    <span>Xu hướng</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="ri-user-6-line"></i>
+                                    <span>Tài khoản</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="ri-heart-line"></i>
+                                    <span>Sản phẩm yêu thích</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#0" class="t-search">
+                                    <i class="ri-search-line"></i>
+                                    <span>Tìm kiếm</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="CartPage.html">
+                                    <i class="ri-shopping-cart-line"></i>
+                                    <span>Giỏ hàng</span>
+                                    <div class="fly-item">
+                                        <span class="item-number">0</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
+        <!-------------------------menu bottom------------------->
+
+        <div class="search-bottom desktop-hide">
+            <div class="container">
+                <div class="wrapper">
+
+                    <form action="" class="search">
+                        <a href="#" class="t-close search-close flexcenter"><i class="ri-close-line"></i></a>
+                        <span class="icon-large"><i class="ri-search-line"></i></span>
+                        <input type="search" placeholder="Tìm kiếm sản phẩm" required>
+                        <button type="submit">Tìm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!---------------------search bottom------------------------>
+
+        <div class="overlay"></div>
     </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+
+    <script src="~/Scripts/js/Script1.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        var logoutDialogShown = false; // Biến để kiểm tra đã hiển thị hộp thoại hay chưa
+
+        function showLogoutDialog() {
+            if (!logoutDialogShown) {
+                logoutDialogShown = true;
+                if (confirm("Bạn có muốn đăng xuất?")) {
+                    window.location.href = '@Url.Action("Logout", "Account")';
+                } else {
+                    logoutDialogShown = false; // Reset lại biến nếu người dùng không đồng ý đăng xuất
+                }
+            }
+        }
+    </script>
 </body>
 </html>

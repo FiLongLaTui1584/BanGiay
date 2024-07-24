@@ -15,17 +15,10 @@ namespace BanGiay.Context
     public partial class ChiTietHoaDon
     {
         public int maCTHD { get; set; }
-        public System.DateTime NgayMua { get; set; }
-        public string SDTKH { get; set; }
-        public string DCGiaoHang { get; set; }
-        public double TongTien { get; set; }
-        public string DVT { get; set; }
-        public double TienGiam { get; set; }
-        public string TrangThaiDH { get; set; }
-        public string tgGiaoHang { get; set; }
-        public double PhiVanChuyen { get; set; }
-        public int maSP { get; set; }
-        public int maHoaDon { get; set; }
+        public Nullable<int> maSP { get; set; }
+        public Nullable<int> maHD { get; set; }
+        public Nullable<int> SoLuong { get; set; }
+        public Nullable<double> GiaTien { get; set; }
     
         public virtual HoaDon HoaDon { get; set; }
         public virtual SanPham SanPham { get; set; }

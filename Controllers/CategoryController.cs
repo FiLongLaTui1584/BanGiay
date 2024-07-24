@@ -10,7 +10,7 @@ namespace BanGiay.Controllers
 {
     public class CategoryController : Controller
     {
-        CNPMEntities1 objCNPMEntities = new CNPMEntities1();
+        CNPMEntities2 objCNPMEntities = new CNPMEntities2();
         // GET: Category
         public ActionResult Index()
         {

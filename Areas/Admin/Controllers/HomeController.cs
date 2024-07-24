@@ -1,18 +1,21 @@
-﻿using BanGiay.Context;
+﻿using BanGiay.Areas.Admin.Model;
+using BanGiay.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using static BanGiay.Areas.Admin.Model.TopSellingShoesViewModel;
 
 namespace BanGiay.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        CNPMEntities1 database = new CNPMEntities1();
+        CNPMEntities2 database = new CNPMEntities2();
         // GET: Admin/Home
         public ActionResult Index()
         {
@@ -226,6 +229,146 @@ namespace BanGiay.Areas.Admin.Controllers
             string path = Path.Combine(Server.MapPath("~/Content/Image/SanPham/"), fileName);
             file.SaveAs(path);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //************************************************XEM DOANH THU***********************************************//
+        public async Task<ActionResult> TopSellingShoes()
+        {
+            var topSellingShoes = await database.ChiTietHoaDons
+         .GroupBy(od => new { od.maSP, od.SanPham.tenSP })
+         .Select(g => new
+         {
+             ProductName = g.Key.tenSP,
+             QuantitySold = g.Sum(od => od.SoLuong),
+             TotalRevenue = g.Sum(od => (double?)od.SoLuong  * od.GiaTien)
+         })
+         .ToListAsync(); // Lấy danh sách trước khi chuyển đổi sang IEnumerable
+
+            var topSellingShoesViewModel = topSellingShoes
+                .Select(g => new TopSellingShoesViewModel
+                {
+                    ProductName = g.ProductName,
+                    QuantitySold = g.QuantitySold ?? 0,
+                    TotalRevenue = (decimal)(g.TotalRevenue ?? 0.0)
+                })
+                .OrderByDescending(vm => vm.QuantitySold)
+                .ToList();
+
+            return View(topSellingShoesViewModel);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //************************************************XEM DOANH THU (THEO THÁNG)***********************************************//
+
+        public async Task<ActionResult> FilterTopSellingShoes(int? month, int? day, string query)
+        {
+            var topSellingShoesQuery = database.ChiTietHoaDons.AsQueryable();
+
+            if (month.HasValue)
+            {
+                topSellingShoesQuery = topSellingShoesQuery.Where(od => od.HoaDon.NgayDat.Month == month.Value);
+            }
+
+            if (day.HasValue)
+            {
+                topSellingShoesQuery = topSellingShoesQuery.Where(od => od.HoaDon.NgayDat.Day == day.Value);
+            }
+
+            if (!string.IsNullOrEmpty(query))
+            {
+                topSellingShoesQuery = topSellingShoesQuery.Where(od => od.SanPham.tenSP.Contains(query));
+            }
+
+            var topSellingShoes = await topSellingShoesQuery
+                .GroupBy(od => new { od.maSP, od.SanPham.tenSP })
+                .Select(g => new
+                {
+                    ProductName = g.Key.tenSP,
+                    QuantitySold = g.Sum(od => od.SoLuong),
+                    TotalRevenue = g.Sum(od => (double?)od.SoLuong * od.GiaTien)
+                })
+                .ToListAsync(); // Lấy danh sách trước khi chuyển đổi sang IEnumerable
+
+            var topSellingShoesViewModel = topSellingShoes
+                .Select(g => new TopSellingShoesViewModel
+                {
+                    ProductName = g.ProductName,
+                    QuantitySold = g.QuantitySold ?? 0,
+                    TotalRevenue = (decimal)(g.TotalRevenue ?? 0.0)
+                })
+                .OrderByDescending(vm => vm.QuantitySold)
+                .ToList();
+
+            return PartialView("FilterTopSellingShoes", topSellingShoesViewModel);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //************************************************XEM DOANH THU (TÌM KIẾM)***********************************************//
+        public async Task<ActionResult> SearchTopSellingShoes(string query)
+        {
+            var topSellingShoes = await database.ChiTietHoaDons
+                .Where(od => od.SanPham.tenSP.Contains(query))
+                .GroupBy(od => new { od.maSP, od.SanPham.tenSP })
+                .Select(g => new
+                {
+                    ProductName = g.Key.tenSP,
+                    QuantitySold = g.Sum(od => od.SoLuong),
+                    TotalRevenue = g.Sum(od => (double?)od.SoLuong * od.GiaTien)
+                })
+                .ToListAsync(); // Lấy danh sách trước khi chuyển đổi sang IEnumerable
+
+            var topSellingShoesViewModel = topSellingShoes
+                .Select(g => new TopSellingShoesViewModel
+                {
+                    ProductName = g.ProductName,
+                    QuantitySold = g.QuantitySold ?? 0,
+                    TotalRevenue = (decimal)(g.TotalRevenue ?? 0.0)
+                })
+                .OrderByDescending(vm => vm.QuantitySold)
+                .ToList();
+
+            return PartialView("_TopSellingShoesPartial", topSellingShoesViewModel);
+        }
+
     }
 }
 

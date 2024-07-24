@@ -48,6 +48,7 @@
                                     <li><a href="#">Xin chào, @Session["UserName"].ToString()</a></li>
                                     <li><a href="javascript:void(0);" onclick="showLogoutDialog()">Đăng xuất</a></li>
                                     <li><a href="LogNRes.html">Tài khoản của tôi</a></li>
+                                    <li><a href="@Url.Action("OrderStatus","CartPage")">Đơn hàng của tôi</a></li>
                                 }
                                 <li>
                                     <a href="#">Tiếng Việt<span class="icon-small"><i class="ri-arrow-down-s-line"></i></span></a>
@@ -149,7 +150,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="@Url.Action("Viewall","Home")">
                                             Tất cả sản phẩm
                                             <div class="fly-item"><span>Mới</span></div>
                                         </a>
@@ -167,16 +168,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="CartPage.html" class="iscart">
-                                        <div class="icon-large">
-                                            <i class="ri-shopping-cart-line"></i>
-                                            <div class="fly-item"><span class="item-number">0</span></div>
-                                        </div>
-                                        <div class="icon-text">
-                                            <div class="mini-text">Tổng cộng</div>
-                                            <div class="cart-total">0đ</div>
-                                        </div>
-                                    </a>
+                                    @Html.Action("BagCart", "CartPage")
                                 </li>
                             </ul>
                         </div>

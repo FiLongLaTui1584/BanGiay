@@ -211,13 +211,13 @@ view-all {
     }
 
 .secondary-button {
-    background-color: var(--secondary-dark-color);
+    background-color: var(--primary-color);
     color: var(--white-color);
 }
 
     .secondary-button:hover {
-        background-color: var(--light-bg-color);
-        color: var(--secondary-dark-color);
+        background-color: var(--dark-color);
+        color: var(--white-color);
     }
 
 .light-button {
@@ -1817,8 +1817,8 @@ form label {
 
 .cart-summary .cart-total {
     padding: 2em;
-    background-color: var(--border-color);
-    line-height: 2em;
+/*    background-color: var(--border-color);
+*/    line-height: 2em;
 }
 
     .cart-summary .cart-total table {
@@ -2317,9 +2317,7 @@ form label {
     }
 
     /*-----------------------------PAGE CART------------------------------------*/
-    .products.cart .form-cart {
-        width: 66%;
-    }
+    
 
     .products.cart .cart-summary {
         width: 34%;

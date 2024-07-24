@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "CheckOut_Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .container1 {
+        max-width: 1280px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 2em;
+    }
+
+    .btn {
+        padding: 0.5em 1em;
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 0.5em;
+        text-align: center;
+        border-radius: 10px;
+        color: var(--white-color);
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: var(--white-color);
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: var(--white-color);
+    }
+
+    h2 {
+        font-weight: bold;
+    }
+</style>
+
+<div class="container1">
+    <h2>Đặt hàng thành công</h2>
+    <h2 style="margin-bottom:25px">Cảm ơn quý khách</h2>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-danger">Quay về trang chủ</a>
+    <a href="@Url.Action("OrderStatus", "CartPage")" class="btn btn-success">Xem đơn hàng của tôi</a>
+
+</div>

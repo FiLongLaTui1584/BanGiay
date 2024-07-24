@@ -1,7 +1,6 @@
-﻿@model IEnumerable<BanGiay.Context.User>
-
+﻿@model IEnumerable<BanGiay.Areas.Admin.Model.TopSellingShoesViewModel>
 @{
-    ViewBag.Title = "Danh sách người dùng";
+    ViewBag.Title = "Top Selling Shoes";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,7 +12,7 @@
     }
 
     .menu {
-        width:245px;
+        width: 210px;
         background-color: #f8f9fa;
         padding: 1em;
         box-shadow: 0 15px 70px -8px rgb(0 0 0 / 20%);
@@ -59,20 +58,21 @@
         margin: 20px 0;
     }
 
-        .search-container input[type="text"] {
+        .search-container input[type="text"], .filter-container select {
             padding: 10px;
             font-size: 16px;
             border: 2px solid #ddd;
-            border-radius: 10px 0 0 10px;
+            border-radius: 20px;
             outline: none;
-            width: 300px;
+            width: 200px;
             transition: all 0.3s ease;
+            margin-right: 10px;
         }
 
-        .search-container button {
+        .search-container button, .filter-container button {
             padding: 10px 20px;
             font-size: 16px;
-            border-radius: 0 10px 10px 0;
+            border-radius: 20px;
             background-color: #28a745;
             color: #fff;
             cursor: pointer;
@@ -124,6 +124,7 @@
     }
 </style>
 
+
 <div class="container1">
     <div class="menu">
         <a href="@Url.Action("Index", "Home")">Danh sách sản phẩm</a>
@@ -134,17 +135,52 @@
 
     <div class="content">
         <div class="styled">
-            <h2>Danh sách tài khoản</h2>
+            <h2>Doanh thu</h2>
             <hr />
 
-            <div class="search-container">
-                @Html.ActionLink("Thêm người dùng", "Create", null, new { @class = "btn btn-success" })
-                <input type="text" id="searchBox" placeholder="Tìm kiếm người dùng..." />
-                <button type="button" onclick="searchUsers()">Tìm kiếm</button>
+            <div class="filter-container search-container">
+                <select id="month" name="month">
+                    <option value="">Chọn tháng</option>
+                    @for (int i = 1; i <= 12; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                <select id="day" name="day">
+                    <option value="">Chọn ngày</option>
+                    @for (int i = 1; i <= 31; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                <button type="button" onclick="applyFilter()">Áp dụng</button>
             </div>
 
-            <div id="userList">
-                @Html.Partial("_UserListPartial", Model)
+            <div class="search-container">
+                <input type="text" id="searchBox" placeholder="Tìm kiếm sản phẩm..." />
+                <button type="button" onclick="searchShoes()">Tìm kiếm</button>
+            </div>
+
+            <div id="shoesList">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng đã bán</th>
+                            <th>Tổng doanh thu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ProductName</td>
+                                <td>@item.QuantitySold</td>
+                                <td>@item.TotalRevenue.ToString("#,##0").Replace(',', '.') VND</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -152,17 +188,42 @@
 
 @section scripts {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script>
-        function searchUsers() {
+        function searchShoes() {
             var query = $('#searchBox').val();
             $.ajax({
-                url: '@Url.Action("Search", "User")',
+                url: '@Url.Action("SearchTopSellingShoes", "Home")',
                 type: 'GET',
                 data: { query: query },
                 success: function (data) {
-                    $('#userList').html(data);
+                    $('#shoesList').html(data);
                 }
             });
         }
     </script>
+
+    <script>
+        function applyFilter() {
+            var month = $('#month').val();
+            var day = $('#day').val();
+            var query = $('#searchBox').val();
+            $.ajax({
+                url: '@Url.Action("FilterTopSellingShoes", "Home")',
+                type: 'GET',
+                data: { month: month, day: day, query: query },
+                success: function (data) {
+                    $('#shoesList').html(data);
+                }
+            });
+        }
+
+        function searchShoes() {
+            applyFilter();
+        }
+    </script>
+
 }
+
+
+

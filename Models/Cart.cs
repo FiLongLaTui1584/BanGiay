@@ -2,51 +2,62 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace BanGiay.Models
 {
     public class CartItem
     {
-        public SanPham _shopping_product { get; set; }
-        public int _shopping_quantity { get; set; }
-
+        public SanPham Product { get; set; }
+        public int Quantity { get; set; }
     }
 
-    /// Giỏ hàng
     public class Cart
     {
-        List<CartItem> items = new List<CartItem>();
+        private List<CartItem> items = new List<CartItem>();
+
         public IEnumerable<CartItem> Items
         {
             get { return items; }
         }
-        public void Add(SanPham _pro, int _quantity = 1)
+
+        public void AddProductToCart(SanPham product, int quantity)
         {
-            var item = items.FirstOrDefault(s => s._shopping_product.maSP == _pro.maSP);
+            var item = items.FirstOrDefault(p => p.Product.maSP == product.maSP);
             if (item == null)
             {
-                items.Add(new CartItem
-                {
-                    _shopping_product = _pro,
-                    _shopping_quantity = _quantity
-
-                });
+                items.Add(new CartItem { Product = product, Quantity = quantity });
             }
             else
             {
-                item._shopping_quantity += _quantity;
-
+                item.Quantity += quantity;
             }
         }
-        public void Update_Quantity_Shopping(int id, int _quantity)
+
+        public int TotalQuantity()
         {
-            var item = items.Find(s => s._shopping_product.maSP == id);
+            return items.Sum(s => s.Quantity);
+        }
+
+        public decimal TotalMoney()
+        {
+            return (decimal)items.Sum(s => s.Quantity * s.Product.GiaGiam);
+        }
+
+        public void UpdateQuantity(int id, int newQuantity)
+        {
+            var item = items.Find(s => s.Product.maSP == id);
             if (item != null)
-            {
-                item._shopping_quantity = _quantity;
-            }
+                item.Quantity = newQuantity;
+        }
+
+        public void RemoveCartItem(int id)
+        {
+            items.RemoveAll(s => s.Product.maSP == id);
+        }
+
+        public void ClearCart()
+        {
+            items.Clear();
         }
     }
 }

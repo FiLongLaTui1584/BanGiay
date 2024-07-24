@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <style>
     .container1 {
@@ -17,6 +17,7 @@
         box-shadow: 0 15px 70px -8px rgb(0 0 0 / 20%);
         border-radius: 10px;
         margin: 32px 0 32px 32px;
+        width:210px
     }
 
     .menu a {
@@ -126,6 +127,8 @@
     <div class="menu">
         <a href="@Url.Action("Index", "Home")">Danh sách sản phẩm</a>
         <a href="@Url.Action("Index", "User")">Danh sách tài khoản</a>
+        <a href="@Url.Action("TopSellingShoes", "Home")">Xem doanh thu</a>
+        <a href="@Url.Action("Index", "OrderManagement")">Quản lý đơn hàng</a>
     </div>
 
     <div class="content">

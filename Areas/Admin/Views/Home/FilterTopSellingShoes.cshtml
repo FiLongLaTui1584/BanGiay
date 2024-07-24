@@ -1,0 +1,22 @@
+﻿@model IEnumerable<BanGiay.Areas.Admin.Model.TopSellingShoesViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng đã bán</th>
+            <th>Tổng doanh thu</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.QuantitySold</td>
+                <td>@item.TotalRevenue.ToString("#,##0").Replace(',', '.') VND</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

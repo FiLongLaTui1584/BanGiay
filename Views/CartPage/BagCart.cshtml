@@ -1,0 +1,11 @@
+﻿<a href="/CartPage/CartPage" class="iscart">
+    <div class="icon-large">
+        <i class="ri-shopping-cart-line"></i>
+        @Html.Action("CartQuan", "CartPage")
+
+    </div>
+    <div class="icon-text">
+        @ViewBag.TotalCart.ToString("#,##0").Replace(',', '.') đồng
+    </div>
+</a>
+

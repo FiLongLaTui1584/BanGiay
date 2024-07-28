@@ -12,7 +12,7 @@ namespace BanGiay.Controllers
 {
     public class AccountController : Controller
     {
-        CNPMEntities2 objCNPMEntities = new CNPMEntities2();
+        CNPMEntities5 objCNPMEntities = new CNPMEntities5();
         // GET: Account
         //public ActionResult Index()
         //{
@@ -77,6 +77,64 @@ namespace BanGiay.Controllers
 
 
 
+        //************************************************EDIT THÔNG TIN***********************************************// 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var user = objCNPMEntities.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new EditUserViewModel
+            {
+                maUser = user.maUser,
+                TenTK = user.TenTK,
+                SDT = user.SDT,
+                diaChi = user.diaChi,
+                ngaySinh = user.ngaySinh,
+                Email = user.Email,
+                Pass =user.Pass
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EditUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = objCNPMEntities.Users.Find(model.maUser);
+                if (user == null)
+                {
+                    return Json(new { success = false, message = "Không tìm thấy người dùng." });
+                }
+
+                user.TenTK = model.TenTK;
+                user.SDT = model.SDT;
+                user.diaChi = model.diaChi;
+                user.ngaySinh = model.ngaySinh;
+                user.Email = model.Email;
+                user.Pass = model.Pass;
+
+                objCNPMEntities.SaveChanges();
+
+                return Json(new { success = true, message = "Cập nhật thông tin thành công! Chuyển về trang chủ ..." });
+            }
+
+            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+            return Json(new { success = false, message = string.Join("  -  ", errors) });
+        }
+
+
+
+
+
+
+
 
 
 
@@ -110,6 +168,9 @@ namespace BanGiay.Controllers
                 {
                     // Đăng nhập thành công
                     Session["UserName"] = user.TenTK;
+                    Session["IsAdmin"] = user.isAdmin;
+                    Session["UserID"] = user.maUser;
+
                     return Json(new { success = true, message = "Đăng nhập thành công, Chuyển đến trang chủ", redirectUrl = Url.Action("Index", "Home") });
                 }
             }
@@ -117,6 +178,7 @@ namespace BanGiay.Controllers
             var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
             return Json(new { success = false, message = string.Join("  -  ", errors) });
         }
+
 
 
 
@@ -160,15 +222,14 @@ namespace BanGiay.Controllers
                 }
                 else
                 {
-                    // Kiểm tra sự tồn tại của thông tin liên hệ
                     var user = objCNPMEntities.Users.FirstOrDefault(u => u.Email == model.ContactInfo || u.SDT == model.ContactInfo);
                     if (user != null)
                     {
                         // Gửi mã OTP qua email hoặc SMS
                         string otp = GenerateOtp();
                         Session["Otp"] = otp;
+                        Session["ContactInfo"] = model.ContactInfo; 
 
-                        // Chuyển đến trang xác nhận mã OTP
                         return Json(new { success = true, message = "OTP đã được gửi. Chuyển đến trang xác nhận OTP." });
                     }
                     else
@@ -181,6 +242,7 @@ namespace BanGiay.Controllers
             var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
             return Json(new { success = false, message = string.Join(" - ", errors) });
         }
+
 
 
 
@@ -215,20 +277,39 @@ namespace BanGiay.Controllers
         [HttpPost]
         public ActionResult ResetPassword(ResetPasswordViewModel model)
         {
-            if (model.NewPassword == model.ConfirmPassword)
+            if (ModelState.IsValid)
             {
-                // Xóa mã OTP khỏi session
-                Session.Remove("Otp");
+                if (model.NewPassword == model.ConfirmPassword)
+                {
+                    string contactInfo = Session["ContactInfo"] as string;
+                    var user = objCNPMEntities.Users.FirstOrDefault(u => u.Email == contactInfo || u.SDT == contactInfo);
+                    if (user != null)
+                    {
+                        user.Pass = model.NewPassword; 
+                        objCNPMEntities.SaveChanges(); 
 
-                return RedirectToAction("Login");
+
+                        Session.Remove("Otp");
+                        Session.Remove("ContactInfo");
+
+                        return RedirectToAction("Login");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Người dùng không tồn tại.");
+                        return View();
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Mật khẩu và xác nhận mật khẩu không khớp.");
+                    return View();
+                }
             }
-            else
-            {
-                // Mật khẩu mới và xác nhận mật khẩu không khớp
-                ModelState.AddModelError("", "Mật khẩu và xác nhận mật khẩu không khớp.");
-                return View();
-            }
+
+            return View(model);
         }
+
 
         private string GenerateOtp()
         {

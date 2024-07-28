@@ -183,6 +183,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\EditUserViewModel.cs" />
     <Compile Include="Models\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
@@ -244,6 +245,10 @@
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Create.cshtml" />
     <Content Include="Areas\Admin\Views\User\_UserListPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\TopSellingShoes.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\_TopSellingShoesPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\FilterTopSellingShoes.cshtml" />
     <EntityDeploy Include="Context\DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
@@ -251,10 +256,6 @@
     <Content Include="Context\DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\Home\TopSellingShoes.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\_TopSellingShoesPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\OrderManagement\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\FilterTopSellingShoes.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -297,6 +298,7 @@
     <Content Include="Views\CartPage\CartQuan.cshtml" />
     <Content Include="Views\CartPage\CheckOut_Success.cshtml" />
     <Content Include="Views\CartPage\OrderStatus.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

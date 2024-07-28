@@ -11,7 +11,7 @@
             <div class="wrapper">
                 <div class="breadcrumb">
                     <ul class="flexitem">
-                        <li><a href="\">Home</a></li>
+                        <li><a href="\">Trang chủ</a></li>
                         <li><a href="@Url.Action("ProductCategory", "Category",new { MaTH = Model.SanPham1.MaTH })">@Model.TenThuongHieu</a></li>
                         <li><a href="#">@Model.SanPham1.tenSP</a></li>
                     </ul>
@@ -72,7 +72,7 @@
                                         <div class="stars"></div>
                                         <div class="stars"></div>
                                         <div class="stars"></div>
-                                        <a href="" class="add-review mini-text">Add your review</a>
+                                        <a href="" class="add-review mini-text">Thêm nhận xét của bạn</a>
                                     </div>
                                     <div class="stock-sku">
                                         <span class="available">@Model.SanPham1.TinhTrangSP</span>
@@ -81,11 +81,7 @@
                                         <span class="current">@Model.SanPham1.GiaGiam.ToString("#,##0").Replace(',', '.') VND</span>
                                         <span class="normal">@Model.SanPham1.GiaGoc.ToString("#,##0").Replace(',', '.') VND</span>
                                     </div>
-                                    @*<div class="colors">
-                                            <p>Color :
-                                            <span style="font-weight: bold;">@Model.MauSac</span>
-                                            </p>
-                                        </div>*@
+
                                     <div class="sizes">
                                         <p>
                                             Size
@@ -118,20 +114,20 @@
                                             <button class="plus circle">+</button>
                                         </div>
                                         <div class="button-cart">
-                                            <button class="primary-button" id="add-to-cart-btn">Add to cart</button>
+                                            <button class="primary-button" id="add-to-cart-btn">Thêm vào giỏ hàng</button>
                                         </div>
                                         <div class="wish-share">
                                             <ul class="flexitem second-links">
                                                 <li>
                                                     <a href="#">
                                                         <span class="icon-large"><i class="ri-heart-line"></i></span>
-                                                        <span>Wish List</span>
+                                                        <span>Yêu thích</span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a href="#">
                                                         <span class="icon-large"><i class="ri-share-line"></i></span>
-                                                        <span>Share</span>
+                                                        <span>Chia sẻ</span>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -140,22 +136,22 @@
                                     <div class="description collapse">
                                         <ul>
                                             <li class="has-child expand">
-                                                <a href="#" class="icon-small">Details</a>
+                                                <a href="#" class="icon-small">Chi tiết</a>
                                                 <ul class="content">
-                                                    <li><span>Brand</span><span>@Model.TenThuongHieu</span></li>
-                                                    <li><span>Sold</span><span>@Model.SanPham1.SLBan</span></li>
-                                                    <li><span>Color</span><span>@Model.SanPham1.MauSac</span></li>
-                                                    <li><span>Gender</span><span>Gay</span></li>
+                                                    <li><span>Thương hiệu</span><span>@Model.TenThuongHieu</span></li>
+                                                    <li><span>Đã bán</span><span>@Model.SanPham1.SLBan</span></li>
+                                                    <li><span>Màu sắc</span><span>@Model.SanPham1.MauSac</span></li>
+                                                    <li><span>Giới tính</span><span>Gay</span></li>
                                                 </ul>
                                             </li>
                                             <li class="has-child">
-                                                <a href="#" class="icon-small">Information</a>
+                                                <a href="#" class="icon-small">Mô tả</a>
                                                 <div class="content">
                                                     <p>@Model.SanPham1.MoTaSP</p>
                                                 </div>
                                             </li>
                                             <li class="has-child">
-                                                <a href="#" class="icon-small">Custom</a>
+                                                <a href="#" class="icon-small">Hướng dẫn chọn size</a>
                                                 <div class="content">
                                                     <table>
                                                         <thead>
@@ -163,7 +159,7 @@
                                                                 <th>US</th>
                                                                 <th>UK</th>
                                                                 <th>VN</th>
-                                                                <th>Milimeter<span class="mini-text">(mm)</span></th>
+                                                                <th>Mili-mét<span class="mini-text">(mm)</span></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -202,24 +198,24 @@
                                                 </div>
                                             </li>
                                             <li class="has-child expand">
-                                                <a href="#" class="icon-small">Reviews<span class="mini-text">2.2k</span></a>
+                                                <a href="#" class="icon-small">Nhận xét<span class="mini-text">2.2k</span></a>
                                                 <div class="content">
                                                     <div class="reviews">
-                                                        <h4>Customers Reviews</h4>
+                                                        <h4>Nhận xét từ khách hàng</h4>
                                                         <div class="review-block">
                                                             <div class="review-block-head">
                                                                 <div class="flexitem">
                                                                     <span class="rate-sum">4.9</span>
-                                                                    <span>2,251 Reviews</span>
+                                                                    <span>2,251 Nhận xét</span>
                                                                 </div>
-                                                                <a href="#review-form" class="secondary-button">Write review</a>
+                                                                <a href="#review-form" class="secondary-button">Viết nhận xét</a>
                                                             </div>
                                                             <div class="review-block-body">
                                                                 <ul>
                                                                     <li class="item">
                                                                         <div class="review-form">
-                                                                            <p class="person">Review by Duc</p>
-                                                                            <p class="mini-text">On 7/7/24</p>
+                                                                            <p class="person">Nhận xét bởi Duc</p>
+                                                                            <p class="mini-text">ngày 7/7/24</p>
                                                                         </div>
                                                                         <div class="review-rating rating">
                                                                             <div class="stars"></div>
@@ -229,7 +225,7 @@
                                                                             <div class="stars"></div>
                                                                         </div>
                                                                         <div class="review-title">
-                                                                            <p>Awesome product!</p>
+                                                                            <p>Sản phẩm rất tốt!</p>
                                                                         </div>
                                                                         <div class="review-text">
                                                                             <p>Món đồ rất đáng tiền mua.</p>
@@ -237,8 +233,8 @@
                                                                     </li>
                                                                     <li class="item">
                                                                         <div class="review-form">
-                                                                            <p class="person">Review by Minh</p>
-                                                                            <p class="mini-text">On 7/7/24</p>
+                                                                            <p class="person">Nhận xét bởi Minh</p>
+                                                                            <p class="mini-text">Ngày 7/7/24</p>
                                                                         </div>
                                                                         <div class="review-rating rating">
                                                                             <div class="stars"></div>
@@ -247,7 +243,7 @@
                                                                             <div class="stars"></div>
                                                                         </div>
                                                                         <div class="review-title">
-                                                                            <p>Awesome product!</p>
+                                                                            <p>Sản phẩm rất tốt!</p>
                                                                         </div>
                                                                         <div class="review-text">
                                                                             <p>Món đồ rất khá đẹp.</p>
@@ -255,13 +251,13 @@
                                                                     </li>
                                                                 </ul>
                                                                 <div class="second-links">
-                                                                    <a href="#" class="view-all">View all reviews<i class="ri-arrow-right-line"></i></a>
+                                                                    <a href="#" class="view-all">Xem tất cả nhận xét<i class="ri-arrow-right-line"></i></a>
                                                                 </div>
                                                             </div>
                                                             <div id="review-rorm" class="review-form">
-                                                                <h4>Write a review</h4>
+                                                                <h4>Viết nhận xét</h4>
                                                                 <div class="rating">
-                                                                    <p>Are you satisfied enough?</p>
+                                                                    <p>Bạn có đủ hài lòng không?</p>
                                                                     <div class="rate-this">
                                                                         <input type="radio" name="rating" id="star5">
                                                                         <label for="star5"><i class="ri-star-fill"></i></label>
@@ -281,18 +277,18 @@
                                                                 </div>
                                                                 <form action="">
                                                                     <p>
-                                                                        <label>Name</label>
+                                                                        <label>Tên</label>
                                                                         <input type="text">
                                                                     </p>
                                                                     <p>
-                                                                        <label>Summary</label>
+                                                                        <label>Điểm</label>
                                                                         <input type="text">
                                                                     </p>
                                                                     <p>
-                                                                        <label>Review</label>
+                                                                        <label>Nhận xét</label>
                                                                         <textarea cols="30" rows="10"></textarea>
                                                                     </p>
-                                                                    <p><a href="#" class="primary-button">Submit Review</a></p>
+                                                                    <p><a href="#" class="primary-button">Gửi nhận xét</a></p>
                                                                 </form>
                                                             </div>
                                                         </div>

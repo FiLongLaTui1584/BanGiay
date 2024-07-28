@@ -10,9 +10,9 @@ namespace BanGiay.Controllers
 {
     public class ProductController : Controller
     {
-        CNPMEntities2 objCNPMEntities = new CNPMEntities2();
+        CNPMEntities5 objCNPMEntities = new CNPMEntities5();
         // GET: Product
-        
+
         public ActionResult Detail(int maSP)
         {
             var objSP = objCNPMEntities.SanPhams.Where(n => n.maSP == maSP).FirstOrDefault();

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CNPMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CatID" />
@@ -91,15 +91,15 @@
             <PropertyRef Name="maUser" />
           </Key>
           <Property Name="maUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SDT" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="isAdmin" Type="bit" Nullable="false" />
           <Property Name="TenTK" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Pass" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SDT" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="diaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ngaySinh" Type="date" Nullable="false" />
+          <Property Name="isAdmin" Type="bit" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="diaChi" Type="nvarchar" MaxLength="100" />
-          <Property Name="ngaySinh" Type="date" />
+          <Property Name="Pass" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <Association Name="FK__ChiTietHoa__maHD__6754599E">
+        <Association Name="FK__ChiTietHoa__maHD__4F7CD00D">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="0..1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -111,7 +111,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHoa__maSP__66603565">
+        <Association Name="FK__ChiTietHoa__maSP__4E88ABD4">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -135,7 +135,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDon__maUser__5FB337D6">
+        <Association Name="FK__HoaDon__maUser__4BAC3F29">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -219,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CNPMModelStoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DanhGia" EntityType="Self.DanhGia" Schema="dbo" store:Type="Tables" />
@@ -229,11 +229,11 @@
           <EntitySet Name="SPYeuThich" EntityType="Self.SPYeuThich" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThuongHieuSP" EntityType="Self.ThuongHieuSP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__ChiTietHoa__maHD__6754599E" Association="Self.FK__ChiTietHoa__maHD__6754599E">
+          <AssociationSet Name="FK__ChiTietHoa__maHD__4F7CD00D" Association="Self.FK__ChiTietHoa__maHD__4F7CD00D">
             <End Role="HoaDon" EntitySet="HoaDon" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHoa__maSP__66603565" Association="Self.FK__ChiTietHoa__maSP__66603565">
+          <AssociationSet Name="FK__ChiTietHoa__maSP__4E88ABD4" Association="Self.FK__ChiTietHoa__maSP__4E88ABD4">
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
           </AssociationSet>
@@ -241,7 +241,7 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="DanhGia" EntitySet="DanhGia" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDon__maUser__5FB337D6" Association="Self.FK__HoaDon__maUser__5FB337D6">
+          <AssociationSet Name="FK__HoaDon__maUser__4BAC3F29" Association="Self.FK__HoaDon__maUser__4BAC3F29">
             <End Role="Users" EntitySet="Users" />
             <End Role="HoaDon" EntitySet="HoaDon" />
           </AssociationSet>
@@ -270,10 +270,11 @@
             <End Role="SPYeuThich" EntitySet="SPYeuThich" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CNPMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CatID" />
@@ -291,8 +292,8 @@
           <Property Name="maHD" Type="Int32" />
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="GiaTien" Type="Double" />
-          <NavigationProperty Name="HoaDon" Relationship="Self.FK__ChiTietHoa__maHD__6754599E" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
-          <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietHoa__maSP__66603565" FromRole="ChiTietHoaDon" ToRole="SanPham" />
+          <NavigationProperty Name="HoaDon" Relationship="Self.FK__ChiTietHoa__maHD__4F7CD00D" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
+          <NavigationProperty Name="SanPham" Relationship="Self.FK__ChiTietHoa__maSP__4E88ABD4" FromRole="ChiTietHoaDon" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="DanhGia">
           <Key>
@@ -313,9 +314,9 @@
           <Property Name="NgayDat" Type="DateTime" Precision="0" />
           <Property Name="maUser" Type="Int32" />
           <Property Name="diaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHoa__maHD__6754599E" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
-          <NavigationProperty Name="User" Relationship="Self.FK__HoaDon__maUser__5FB337D6" FromRole="HoaDon" ToRole="Users" />
           <Property Name="TrangThai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHoa__maHD__4F7CD00D" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
+          <NavigationProperty Name="User" Relationship="Self.FK__HoaDon__maUser__4BAC3F29" FromRole="HoaDon" ToRole="Users" />
         </EntityType>
         <EntityType Name="KichCo">
           <Key>
@@ -347,7 +348,7 @@
           <Property Name="maSize" Type="Int32" Nullable="false" />
           <Property Name="giamGia" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="Self.FK__SanPham__CatID__4316F928" FromRole="SanPham" ToRole="Category" />
-          <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHoa__maSP__66603565" FromRole="SanPham" ToRole="ChiTietHoaDon" />
+          <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHoa__maSP__4E88ABD4" FromRole="SanPham" ToRole="ChiTietHoaDon" />
           <NavigationProperty Name="DanhGia" Relationship="Self.FK__SanPham__maDanhg__440B1D61" FromRole="SanPham" ToRole="DanhGia" />
           <NavigationProperty Name="KichCo" Relationship="Self.FK__SanPham__maSize__44FF419A" FromRole="SanPham" ToRole="KichCo" />
           <NavigationProperty Name="ThuongHieuSP" Relationship="Self.FK__SanPham__MaTH__4222D4EF" FromRole="SanPham" ToRole="ThuongHieuSP" />
@@ -377,15 +378,15 @@
             <PropertyRef Name="maUser" />
           </Key>
           <Property Name="maUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="isAdmin" Type="Boolean" Nullable="false" />
           <Property Name="TenTK" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="diaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ngaySinh" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="isAdmin" Type="Boolean" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="diaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ngaySinh" Type="DateTime" Precision="0" />
+          <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="DanhGias" Relationship="Self.FK__DanhGia__maUser__3F466844" FromRole="Users" ToRole="DanhGia" />
-          <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__maUser__5FB337D6" FromRole="Users" ToRole="HoaDon" />
+          <NavigationProperty Name="HoaDons" Relationship="Self.FK__HoaDon__maUser__4BAC3F29" FromRole="Users" ToRole="HoaDon" />
           <NavigationProperty Name="SPYeuThiches" Relationship="Self.FK__SPYeuThic__maUse__48CFD27E" FromRole="Users" ToRole="SPYeuThich" />
         </EntityType>
         <Association Name="FK__SanPham__CatID__4316F928">
@@ -400,7 +401,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHoa__maHD__6754599E">
+        <Association Name="FK__ChiTietHoa__maHD__4F7CD00D">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="0..1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -412,7 +413,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietHoa__maSP__66603565">
+        <Association Name="FK__ChiTietHoa__maSP__4E88ABD4">
           <End Role="SanPham" Type="Self.SanPham" Multiplicity="0..1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -448,7 +449,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HoaDon__maUser__5FB337D6">
+        <Association Name="FK__HoaDon__maUser__4BAC3F29">
           <End Role="Users" Type="Self.User" Multiplicity="0..1" />
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -508,7 +509,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CNPMEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CNPMEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="DanhGias" EntityType="Self.DanhGia" />
@@ -522,11 +523,11 @@
             <End Role="Category" EntitySet="Categories" />
             <End Role="SanPham" EntitySet="SanPhams" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHoa__maHD__6754599E" Association="Self.FK__ChiTietHoa__maHD__6754599E">
+          <AssociationSet Name="FK__ChiTietHoa__maHD__4F7CD00D" Association="Self.FK__ChiTietHoa__maHD__4F7CD00D">
             <End Role="HoaDon" EntitySet="HoaDons" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietHoa__maSP__66603565" Association="Self.FK__ChiTietHoa__maSP__66603565">
+          <AssociationSet Name="FK__ChiTietHoa__maSP__4E88ABD4" Association="Self.FK__ChiTietHoa__maSP__4E88ABD4">
             <End Role="SanPham" EntitySet="SanPhams" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
           </AssociationSet>
@@ -538,7 +539,7 @@
             <End Role="DanhGia" EntitySet="DanhGias" />
             <End Role="SanPham" EntitySet="SanPhams" />
           </AssociationSet>
-          <AssociationSet Name="FK__HoaDon__maUser__5FB337D6" Association="Self.FK__HoaDon__maUser__5FB337D6">
+          <AssociationSet Name="FK__HoaDon__maUser__4BAC3F29" Association="Self.FK__HoaDon__maUser__4BAC3F29">
             <End Role="Users" EntitySet="Users" />
             <End Role="HoaDon" EntitySet="HoaDons" />
           </AssociationSet>
@@ -564,9 +565,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CNPMModelStoreContainer" CdmEntityContainer="CNPMEntities2">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="CNPMEntities5">
           <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="CNPMModel.Category">
+            <EntityTypeMapping TypeName="Model.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="CatID" ColumnName="CatID" />
                 <ScalarProperty Name="NameCate" ColumnName="NameCate" />
@@ -574,7 +575,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietHoaDons">
-            <EntityTypeMapping TypeName="CNPMModel.ChiTietHoaDon">
+            <EntityTypeMapping TypeName="Model.ChiTietHoaDon">
               <MappingFragment StoreEntitySet="ChiTietHoaDon">
                 <ScalarProperty Name="maCTHD" ColumnName="maCTHD" />
                 <ScalarProperty Name="maSP" ColumnName="maSP" />
@@ -585,7 +586,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DanhGias">
-            <EntityTypeMapping TypeName="CNPMModel.DanhGia">
+            <EntityTypeMapping TypeName="Model.DanhGia">
               <MappingFragment StoreEntitySet="DanhGia">
                 <ScalarProperty Name="maDanhgia" ColumnName="maDanhgia" />
                 <ScalarProperty Name="diemDanhgia" ColumnName="diemDanhgia" />
@@ -595,18 +596,18 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HoaDons">
-            <EntityTypeMapping TypeName="CNPMModel.HoaDon">
+            <EntityTypeMapping TypeName="Model.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="maHD" ColumnName="maHD" />
                 <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
                 <ScalarProperty Name="maUser" ColumnName="maUser" />
                 <ScalarProperty Name="diaChi" ColumnName="diaChi" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KichCoes">
-            <EntityTypeMapping TypeName="CNPMModel.KichCo">
+            <EntityTypeMapping TypeName="Model.KichCo">
               <MappingFragment StoreEntitySet="KichCo">
                 <ScalarProperty Name="maSize" ColumnName="maSize" />
                 <ScalarProperty Name="size" ColumnName="size" />
@@ -614,7 +615,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SanPhams">
-            <EntityTypeMapping TypeName="CNPMModel.SanPham">
+            <EntityTypeMapping TypeName="Model.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
                 <ScalarProperty Name="maSP" ColumnName="maSP" />
                 <ScalarProperty Name="tenSP" ColumnName="tenSP" />
@@ -637,7 +638,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SPYeuThiches">
-            <EntityTypeMapping TypeName="CNPMModel.SPYeuThich">
+            <EntityTypeMapping TypeName="Model.SPYeuThich">
               <MappingFragment StoreEntitySet="SPYeuThich">
                 <ScalarProperty Name="maSPYT" ColumnName="maSPYT" />
                 <ScalarProperty Name="maSP" ColumnName="maSP" />
@@ -646,7 +647,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ThuongHieuSPs">
-            <EntityTypeMapping TypeName="CNPMModel.ThuongHieuSP">
+            <EntityTypeMapping TypeName="Model.ThuongHieuSP">
               <MappingFragment StoreEntitySet="ThuongHieuSP">
                 <ScalarProperty Name="MaTH" ColumnName="MaTH" />
                 <ScalarProperty Name="TenTH" ColumnName="TenTH" />
@@ -655,16 +656,16 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="CNPMModel.User">
+            <EntityTypeMapping TypeName="Model.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="maUser" ColumnName="maUser" />
-                <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
                 <ScalarProperty Name="TenTK" ColumnName="TenTK" />
-                <ScalarProperty Name="Pass" ColumnName="Pass" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="diaChi" ColumnName="diaChi" />
                 <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

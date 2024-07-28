@@ -4,26 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5f63715cef744ff7b9cb418b5b83adea" Name="Diagram1">
-        <EntityTypeShape EntityType="CNPMModel.Category" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMModel.ChiTietHoaDon" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMModel.DanhGia" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMModel.HoaDon" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMModel.KichCo" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMModel.SanPham" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMModel.SPYeuThich" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMModel.ThuongHieuSP" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CNPMModel.User" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <AssociationConnector Association="CNPMModel.FK__SanPham__CatID__4316F928" ManuallyRouted="false" />
-        <AssociationConnector Association="CNPMModel.FK__ChiTietHoa__maHD__6754599E" ManuallyRouted="false" />
-        <AssociationConnector Association="CNPMModel.FK__ChiTietHoa__maSP__66603565" ManuallyRouted="false" />
-        <AssociationConnector Association="CNPMModel.FK__DanhGia__maUser__3F466844" ManuallyRouted="false" />
-        <AssociationConnector Association="CNPMModel.FK__SanPham__maDanhg__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="CNPMModel.FK__HoaDon__maUser__5FB337D6" ManuallyRouted="false" />
-        <AssociationConnector Association="CNPMModel.FK__SanPham__maSize__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="CNPMModel.FK__SanPham__MaTH__4222D4EF" ManuallyRouted="false" />
-        <AssociationConnector Association="CNPMModel.FK__SPYeuThich__maSP__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="CNPMModel.FK__SPYeuThic__maUse__48CFD27E" ManuallyRouted="false" />
+      <Diagram DiagramId="e8aab2a25a674bc5b5442a54d50c749a" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ChiTietHoaDon" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DanhGia" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.HoaDon" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KichCo" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SanPham" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SPYeuThich" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ThuongHieuSP" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__SanPham__CatID__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__ChiTietHoa__maHD__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__ChiTietHoa__maSP__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__DanhGia__maUser__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__SanPham__maDanhg__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__HoaDon__maUser__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__SanPham__maSize__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__SanPham__MaTH__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__SPYeuThich__maSP__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__SPYeuThic__maUse__48CFD27E" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

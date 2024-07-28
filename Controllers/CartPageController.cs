@@ -9,7 +9,7 @@ namespace BanGiay.Controllers
 {
     public class CartPageController : Controller
     {
-        private CNPMEntities2 database = new CNPMEntities2();
+        private CNPMEntities5 database = new CNPMEntities5();
 
 
 
@@ -204,6 +204,29 @@ namespace BanGiay.Controllers
                                  .Include(o => o.ChiTietHoaDons.Select(c => c.SanPham)) // Tải thông tin sản phẩm
                                  .ToList();
             return View(orders);
+        }
+
+
+        public ActionResult ConfirmReceipt(int id)
+        {
+            var order = database.HoaDons.SingleOrDefault(o => o.maHD == id);
+            if (order != null && order.TrangThai == "Đã xác nhận, đang giao đơn hàng")
+            {
+                order.TrangThai = "Đã giao";
+                database.SaveChanges();
+            }
+            return RedirectToAction("OrderStatus");
+        }
+
+        public ActionResult CancelOrder(int id)
+        {
+            var order = database.HoaDons.SingleOrDefault(o => o.maHD == id);
+            if (order != null && order.TrangThai == "Đã xác nhận, đang giao đơn hàng")
+            {
+                order.TrangThai = "Đã hủy đơn";
+                database.SaveChanges();
+            }
+            return RedirectToAction("OrderStatus");
         }
 
 

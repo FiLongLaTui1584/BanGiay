@@ -1,195 +1,195 @@
-﻿@model IEnumerable<BanGiay.Context.SanPham>
+﻿    @model IEnumerable<BanGiay.Context.SanPham>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}
-<style>
-    .container1 {
-        display: flex;
-        margin: 0 auto;
-        max-width:1280px;
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     }
+    <style>
+        .container1 {
+            display: flex;
+            margin: 0 auto;
+            max-width:1280px;
+        }
 
-    .menu {
-        background-color: #f8f9fa;
-        padding: 1em;
-        box-shadow: 0 15px 70px -8px rgb(0 0 0 / 20%);
-        border-radius: 10px;
-        margin: 32px 0 32px 32px;
-        width:210px
-    }
+        .menu {
+            background-color: #f8f9fa;
+            padding: 1em;
+            box-shadow: 0 15px 70px -8px rgb(0 0 0 / 20%);
+            border-radius: 10px;
+            margin: 32px 0 32px 32px;
+            width:210px
+        }
 
-    .menu a {
-        display: block;
-        padding: 10px;
-        text-decoration: none;
-        color: #343a40;
-        font-weight: bold;
-        margin-bottom: 5px;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-    }
+        .menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #343a40;
+            font-weight: bold;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
 
-    .menu a:hover {
-        background-color: #e9ecef;
-    }
+        .menu a:hover {
+            background-color: #e9ecef;
+        }
 
-    .content {
-        flex-grow: 1;
-        padding: 2em 0 2em 1em;
-    }
+        .content {
+            flex-grow: 1;
+            padding: 2em 0 2em 1em;
+        }
 
-    .styled {
-        padding: 2em;
-        box-shadow: 0 15px 70px -8px rgb(0 0 0 / 20%);
-        border-radius: 20px;
-        width: 95%;
-    }
+        .styled {
+            padding: 2em;
+            box-shadow: 0 15px 70px -8px rgb(0 0 0 / 20%);
+            border-radius: 20px;
+            width: 95%;
+        }
 
-    h2 {
-        font-weight: bold;
-        text-align: center;
-    }
+        h2 {
+            font-weight: bold;
+            text-align: center;
+        }
 
-    .search-container {
-        display: flex;
-        align-items: center;
-        margin: 20px 0;
-    }
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
 
-    .search-container input[type="text"] {
-        padding: 10px;
-        font-size: 16px;
-        border: 2px solid #ddd;
-        border-radius: 10px 0 0 10px;
-        outline: none;
-        width: 300px;
-        transition: all 0.3s ease;
-    }
+        .search-container input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 10px 0 0 10px;
+            outline: none;
+            width: 300px;
+            transition: all 0.3s ease;
+        }
 
-    .search-container button {
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 0 10px 10px 0;
-        background-color: #28a745;
-        color: #fff;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
+        .search-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 0 10px 10px 0;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-    .table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 1.5em;
-        border-radius: 20px;
-    }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5em;
+            border-radius: 20px;
+        }
 
-    .table th, .table td {
-        border: 1px solid var(--border-color);
-        padding: 0.75em;
-        text-align: left;
-    }
+        .table th, .table td {
+            border: 1px solid var(--border-color);
+            padding: 0.75em;
+            text-align: left;
+        }
 
-    .table th {
-        background-color: var(--primary-color);
-        color: var(--white-color);
-    }
+        .table th {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
 
-    .btn {
-        padding: 0.5em 1em;
-        border: none;
-        text-decoration: none;
-        cursor: pointer;
-        display: inline-block;
-        margin-right: 0.5em;
-        text-align: center;
-        border-radius: 10px;
-    }
+        .btn {
+            padding: 0.5em 1em;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+            margin-right: 0.5em;
+            text-align: center;
+            border-radius: 10px;
+        }
 
-    .btn-success {
-        background-color: #28a745;
-        color: var(--white-color);
-    }
+        .btn-success {
+            background-color: #28a745;
+            color: var(--white-color);
+        }
 
-    .btn-dark {
-        background-color: #343a40;
-        color: var(--white-color);
-    }
+        .btn-dark {
+            background-color: #343a40;
+            color: var(--white-color);
+        }
 
-    .btn-danger {
-        background-color: #dc3545;
-        color: var(--white-color);
-    }
-</style>
+        .btn-danger {
+            background-color: #dc3545;
+            color: var(--white-color);
+        }
+    </style>
 
-<div class="container1">
-    <div class="menu">
-        <a href="@Url.Action("Index", "Home")">Danh sách sản phẩm</a>
-        <a href="@Url.Action("Index", "User")">Danh sách tài khoản</a>
-        <a href="@Url.Action("TopSellingShoes", "Home")">Xem doanh thu</a>
-        <a href="@Url.Action("Index", "OrderManagement")">Quản lý đơn hàng</a>
-    </div>
+    <div class="container1">
+        <div class="menu">
+            <a href="@Url.Action("Index", "Home")">Danh sách sản phẩm</a>
+            <a href="@Url.Action("Index", "User")">Danh sách tài khoản</a>
+            <a href="@Url.Action("TopSellingShoes", "Home")">Xem doanh thu</a>
+            <a href="@Url.Action("Index", "OrderManagement")">Quản lý đơn hàng</a>
+        </div>
 
-    <div class="content">
-        <div class="styled">
-            <h2>Danh sách sản phẩm</h2>
-            <hr />
+        <div class="content">
+            <div class="styled">
+                <h2>Danh sách sản phẩm</h2>
+                <hr />
 
-            <div class="search-container">
-                @Html.ActionLink("Thêm sản phẩm", "Create", null, new { @class = "btn btn-success" })
-                <input type="text" id="searchBox" placeholder="Tìm kiếm sản phẩm..." />
-                <button type="button" onclick="searchProducts()">Tìm kiếm</button>
-            </div>
+                <div class="search-container">
+                    @Html.ActionLink("Thêm sản phẩm", "Create", null, new { @class = "btn btn-success" })
+                    <input type="text" id="searchBox" placeholder="Tìm kiếm sản phẩm..." />
+                    <button type="button" onclick="searchProducts()">Tìm kiếm</button>
+                </div>
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            Mã sản phẩm
-                        </th>
-                        <th>
-                            Tên sản phẩm
-                        </th>
-                        <th>Hành động</th>
-                    </tr>
-                </thead>
-                <tbody id="productList">
-                    @foreach (var item in Model)
-                    {
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.maSP)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.tenSP)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Sửa", "Edit", new { id = item.maSP }, new { @class = "btn btn-success" }) |
-                                @Html.ActionLink("Chi tiết", "Details", new { id = item.maSP }, new { @class = "btn btn-dark" }) |
-                                @Html.ActionLink("Xóa", "Delete", new { id = item.maSP }, new { @class = "btn btn-danger" })
-                            </td>
+                            <th>
+                                Mã sản phẩm
+                            </th>
+                            <th>
+                                Tên sản phẩm
+                            </th>
+                            <th>Hành động</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody id="productList">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.maSP)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tenSP)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.maSP }, new { @class = "btn btn-success" }) |
+                                    @Html.ActionLink("Chi tiết", "Details", new { id = item.maSP }, new { @class = "btn btn-dark" }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.maSP }, new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
-@section scripts {
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        function searchProducts() {
-            var query = $('#searchBox').val();
-            $.ajax({
-                url: '@Url.Action("Search", "Home")',
-                type: 'GET',
-                data: { query: query },
-                success: function (data) {
-                    $('#productList').html(data);
-                }
-            });
-        }
-    </script>
-}
+    @section scripts {
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            function searchProducts() {
+                var query = $('#searchBox').val();
+                $.ajax({
+                    url: '@Url.Action("Search", "Home")',
+                    type: 'GET',
+                    data: { query: query },
+                    success: function (data) {
+                        $('#productList').html(data);
+                    }
+                });
+            }
+        </script>
+    }

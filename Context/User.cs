@@ -23,13 +23,13 @@ namespace BanGiay.Context
         }
     
         public int maUser { get; set; }
-        public string SDT { get; set; }
-        public bool isAdmin { get; set; }
         public string TenTK { get; set; }
-        public string Pass { get; set; }
-        public string Email { get; set; }
+        public string SDT { get; set; }
         public string diaChi { get; set; }
-        public Nullable<System.DateTime> ngaySinh { get; set; }
+        public System.DateTime? ngaySinh { get; set; }
+        public bool isAdmin { get; set; }
+        public string Email { get; set; }
+        public string Pass { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DanhGia> DanhGias { get; set; }

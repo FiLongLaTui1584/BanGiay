@@ -13,10 +13,10 @@ namespace BanGiay.Context
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CNPMEntities2 : DbContext
+    public partial class CNPMEntities5 : DbContext
     {
-        public CNPMEntities2()
-            : base("name=CNPMEntities2")
+        public CNPMEntities5()
+            : base("name=CNPMEntities5")
         {
         }
     

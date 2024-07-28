@@ -10,7 +10,7 @@ namespace BanGiay.Areas.Admin.Controllers
 {
     public class OrderManagementController : Controller
     {
-        private CNPMEntities2 database = new CNPMEntities2();
+        private CNPMEntities5 database = new CNPMEntities5();
 
         public ActionResult Index()
         {
@@ -29,11 +29,12 @@ namespace BanGiay.Areas.Admin.Controllers
             var order = database.HoaDons.SingleOrDefault(o => o.maHD == id);
             if (order != null)
             {
-                order.TrangThai = "Đã xác nhận";
+                order.TrangThai = "Đã xác nhận, đang giao đơn hàng";
                 database.SaveChanges();
             }
             return RedirectToAction("Index");
         }
+
 
         public ActionResult RejectOrder(int id)
         {

@@ -15,7 +15,7 @@ namespace BanGiay.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        CNPMEntities2 database = new CNPMEntities2();
+        CNPMEntities5 database = new CNPMEntities5();
         // GET: Admin/Home
         public ActionResult Index()
         {
@@ -106,6 +106,7 @@ namespace BanGiay.Areas.Admin.Controllers
 
 
 
+
         //************************************************XEM CHI TIẾT SẢN PHẨM***********************************************// 
         public ActionResult Details(int id)
         {
@@ -119,7 +120,8 @@ namespace BanGiay.Areas.Admin.Controllers
 
         //************************************************SỬA SẢN PHẨM***********************************************//
         [HttpGet]
-        public ActionResult Edit(int id){
+        public ActionResult Edit(int id)
+        {
             var sanpham = database.SanPhams.Where(n => n.maSP == id).FirstOrDefault();
 
             var categories = database.Categories.ToList();
@@ -190,7 +192,7 @@ namespace BanGiay.Areas.Admin.Controllers
                 catch (Exception ex)
                 {
                     transaction.Rollback();
-                    return View(sanpham); 
+                    return View(sanpham);
                 }
             }
         }
@@ -198,8 +200,10 @@ namespace BanGiay.Areas.Admin.Controllers
 
 
 
+
         //************************************************XÓA SẢN PHẨM***********************************************//
-        public ActionResult Delete(int id) {
+        public ActionResult Delete(int id)
+        {
             return View(database.SanPhams.Where(n => n.maSP == id).FirstOrDefault());
         }
         [HttpPost]
@@ -210,6 +214,7 @@ namespace BanGiay.Areas.Admin.Controllers
             database.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
 
 

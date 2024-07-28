@@ -29,7 +29,7 @@
         border-collapse: collapse;
         margin-bottom: 1.5em;
         border-radius: 20px;
-        margin-top:25px
+        margin-top: 25px;
     }
 
         .table th, .table td {
@@ -42,6 +42,27 @@
             background-color: var(--primary-color);
             color: var(--white-color);
         }
+
+    .btn {
+        padding: 0.5em 1em;
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 0.5em;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: var(--white-color);
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: var(--white-color);
+    }
 </style>
 
 <div class="container1">
@@ -60,6 +81,7 @@
                     <th>Giá</th>
                     <th>Tổng Tiền</th>
                     <th>Trạng Thái</th>
+                    <th>Hành Động</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,6 +98,13 @@
                             <td>@detail.GiaTien</td>
                             <td>@(detail.GiaTien * detail.SoLuong)</td>
                             <td>@order.TrangThai</td>
+                            <td>
+                                @if (order.TrangThai == "Đã xác nhận, đang giao đơn hàng")
+                                {
+                                    @Html.ActionLink("Đã nhận được hàng", "ConfirmReceipt", new { id = order.maHD }, new { @class = "btn btn-success" })
+                                    @Html.ActionLink("Hủy đơn", "CancelOrder", new { id = order.maHD }, new { @class = "btn btn-danger" })
+                                }
+                            </td>
                         </tr>
                     }
                 }

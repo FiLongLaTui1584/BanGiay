@@ -1,6 +1,8 @@
 ﻿@*@model BanGiay.Models.ViewModel*@
 @{
     var userName = Session["UserName"] as string;
+    var isAdmin = Session["IsAdmin"] as bool?;
+    var userId = Session["UserID"] as int?;
 }
 
 
@@ -47,8 +49,12 @@
                                 {
                                     <li><a href="#">Xin chào, @Session["UserName"].ToString()</a></li>
                                     <li><a href="javascript:void(0);" onclick="showLogoutDialog()">Đăng xuất</a></li>
-                                    <li><a href="LogNRes.html">Tài khoản của tôi</a></li>
+                                    <li><a href="@Url.Action("Edit", "Account", new { id = userId })">Tài khoản của tôi</a></li>
                                     <li><a href="@Url.Action("OrderStatus","CartPage")">Đơn hàng của tôi</a></li>
+                                    if (isAdmin.HasValue && isAdmin.Value)
+                                    {
+                                        <li><a href="@Url.Action("Index", "Home", new { area = "Admin" })">Quản trị sản phẩm</a></li>
+                                    }
                                 }
                                 <li>
                                     <a href="#">Tiếng Việt<span class="icon-small"><i class="ri-arrow-down-s-line"></i></span></a>
@@ -127,7 +133,7 @@
                                                                 <li><a href="#">Balenciaga</a></li>
                                                                 <li><a href="#">Fendi</a></li>
                                                             </ul>
-                                                            <a href="#" class="view-all">Xem tất cả thương hiệu<i class="ri-arrow-right-line"></i></a>
+                                                            <a href="@Url.Action("Viewall","Home")" class="view-all">Xem tất cả thương hiệu<i class="ri-arrow-right-line"></i></a>
                                                         </div>
                                                     </div>
                                                     <div class="flexcol products">
@@ -209,8 +215,8 @@
                                                         <h4><a href="#">CỬA HÀNG</a></h4>
                                                         <ul>
                                                             @*@foreach(var item in Model.Category.Take(4)) {
-                                               <li><a href="#">@item.NameCate</a></li>
-                                            }*@
+                                                                   <li><a href="#">@item.NameCate</a></li>
+                                                                }*@
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -259,8 +265,8 @@
 
 
 
-            @RenderBody()
-   
+        @RenderBody()
+
 
 
 
@@ -308,15 +314,15 @@
                             <div class="row">
                                 <div class="item mini-links">
                                     <h3 style="margin-bottom:20px;">Các danh mục sản phẩm</h3>
-                                        <ul class="flexcol">
-                                            <li><a href="#">Nữ</a></li>
-                                            <li><a href="#">Nam</a></li>
-                                            <li><a href="#">Thể thao</a></li>
-                                            <li><a href="#">Thương hiệu</a></li>
-                                            <li><a href="#">Thời trang</a></li>
-                                            <li><a href="#">Thể thao</a></li>
-                                        </ul>
-                            </div>
+                                    <ul class="flexcol">
+                                        <li><a href="#">Nữ</a></li>
+                                        <li><a href="#">Nam</a></li>
+                                        <li><a href="#">Thể thao</a></li>
+                                        <li><a href="#">Thương hiệu</a></li>
+                                        <li><a href="#">Thời trang</a></li>
+                                        <li><a href="#">Thể thao</a></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="item mini-links">
@@ -444,7 +450,7 @@
             if (!logoutDialogShown) {
                 logoutDialogShown = true;
                 if (confirm("Bạn có muốn đăng xuất?")) {
-                    window.location.href = '@Url.Action("Logout", "Account")'; 
+                    window.location.href = '@Url.Action("Logout", "Account")';
                 } else {
                     logoutDialogShown = false; // Reset lại biến nếu người dùng không đồng ý đăng xuất
                 }

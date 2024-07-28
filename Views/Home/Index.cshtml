@@ -61,13 +61,14 @@
     <div class="brands">
         <div class="container">
             <div class="wrapper flexitem">
-                @foreach(var item in Model.ThuongHieuSP) {
+                @foreach (var item in Model.ThuongHieuSP)
+                {
                     <div class="item">
                         <a href="@Url.Action("ProductCategory", "Category", new { MaTH = item.MaTH })">
                             <img src="@Url.Content(item.Logo)" style="width:200px;height:100px" alt="" />
                         </a>
-                    </div> 
-                 }
+                    </div>
+                }
             </div>
         </div>
     </div>
@@ -84,7 +85,8 @@
                         </div>
                     </div>
                     <div class="products main flexwrap">
-                        @foreach(var item in Model.SanPham.Take(9)) {
+                        @foreach (var item in Model.SanPham.Take(9))
+                        {
                             <div class="item">
                                 <div class="media">
                                     <div class="thumbnail object-cover">
@@ -97,7 +99,7 @@
                                             <li class="active"><a href="#"><i class="ri-heart-line"></i></a></li>
                                             <li>
                                                 <a href="@Url.Action("Detail", "Product", new { maSP = item.maSP })">
-                                                   <i class="ri-eye-line"></i>
+                                                    <i class="ri-eye-line"></i>
                                                 </a>
                                             </li>
                                             <li><a href="#"><i class="ri-shuffle-line"></i></a></li>
@@ -121,7 +123,7 @@
                                     </div>
                                 </div>
                             </div>
-                         }
+                        }
                     </div>
                 </div>
             </div>

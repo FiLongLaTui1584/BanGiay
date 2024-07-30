@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e8aab2a25a674bc5b5442a54d50c749a" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ChiTietHoaDon" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DanhGia" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.HoaDon" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.KichCo" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.SanPham" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.SPYeuThich" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ThuongHieuSP" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+      <Diagram DiagramId="f6d3572755a24ac5abd86f97de0f5e4d" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ChiTietHoaDon" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DanhGia" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.HoaDon" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KichCo" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SanPham" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SPYeuThich" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ThuongHieuSP" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="Model.FK__SanPham__CatID__4316F928" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK__ChiTietHoa__maHD__4F7CD00D" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK__ChiTietHoa__maSP__4E88ABD4" ManuallyRouted="false" />

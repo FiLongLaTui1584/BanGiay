@@ -1,23 +1,24 @@
 ﻿@model BanGiay.Models.ViewModel
 @{
-    ViewBag.Title = "Viewall";
+    ViewBag.Title = "ProductCategoryByBrand";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="features">
     <div class="container">
         <div class="wrapper">
-            
+            @foreach (var item in Model.ThuongHieuSP.Take(1))
+            {
                 <div class="breadcrumb">
                     <ul class="flexitem">
                         <li><a href="\">Trang chủ</a></li>
-                        <li><a href="#">Tất cả sản phẩm</a></li>
+                        <li><a href="#">@item.TenTH</a></li>
                     </ul>
                 </div>
-           
+            }
             <div class="column">
                 <div class="sectop flexitem">
-                    <h2><span class="circle"></span><span>TẤT CẢ SẢN PHẨM </span></h2>
+                    <h2><span class="circle"></span><span>TẤT CẢ SẢN PHẨM CỦA HÃNG</span></h2>
                 </div>
                 <div class="products main flexwrap">
                     @foreach (var item in Model.SanPham)
@@ -53,8 +54,8 @@
                                 </div>
                                 <h3><a href="@Url.Action("Detail", "Product", new { maSP = item.maSP })">@item.tenSP</a></h3>
                                 <div class="price">
-                                    <span class="current">@item.GiaGiam.ToString("#,##0").Replace(',', '.') VND</span>
-                                    <span class="normal mini-text">@item.GiaGoc.ToString("#,##0").Replace(',', '.') VND</span>
+                                    <span class="current">@item.GiaGiam₫</span>
+                                    <span class="normal mini-text">@item.GiaGoc₫</span>
                                 </div>
                             </div>
                         </div>

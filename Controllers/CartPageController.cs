@@ -1,6 +1,7 @@
 ﻿using BanGiay.Context;
 using BanGiay.Models;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -9,7 +10,7 @@ namespace BanGiay.Controllers
 {
     public class CartPageController : Controller
     {
-        private CNPMEntities5 database = new CNPMEntities5();
+        private CNPM_Entities database = new CNPM_Entities();
 
 
 
@@ -46,7 +47,14 @@ namespace BanGiay.Controllers
             var product = database.SanPhams.SingleOrDefault(s => s.maSP == id);
             if (product != null)
             {
-                GetCart().AddProductToCart(product,quantity);
+                if (product.SLTon >= quantity)
+                {
+                    GetCart().AddProductToCart(product, quantity);
+                }
+                else
+                {
+                    TempData["Error"] = "Số lượng tồn kho không đủ.";
+                }
             }
             return RedirectToAction("CartPage");
         }
@@ -75,7 +83,7 @@ namespace BanGiay.Controllers
         {
             if (Session["Cart"] == null)
             {
-                return RedirectToAction("CartPage", "CartPage");
+                return View("EmptyCart");
             }
 
             if (!IsUserLoggedIn())
@@ -135,6 +143,12 @@ namespace BanGiay.Controllers
 
 
 
+
+
+
+
+
+
         [HttpPost]
         public ActionResult ThanhToan(FormCollection form)
         {
@@ -153,11 +167,11 @@ namespace BanGiay.Controllers
                     NgayDat = DateTime.Now,
                     diaChi = form["AddressDeliverry"],
                     maUser = user.maUser,
-                    TrangThai = "Chờ xác nhận" 
+                    TrangThai = "Chờ xác nhận"
                 };
 
                 database.HoaDons.Add(_order);
-                database.SaveChanges(); 
+                database.SaveChanges();
 
                 foreach (var item in cart.Items)
                 {
@@ -169,6 +183,18 @@ namespace BanGiay.Controllers
                         SoLuong = item.Quantity
                     };
                     database.ChiTietHoaDons.Add(_order_detail);
+
+                    var product = database.SanPhams.SingleOrDefault(p => p.maSP == item.Product.maSP);
+                    if (product != null)
+                    {
+                        product.SLBan += item.Quantity;
+                        product.SLTon -= item.Quantity;
+
+                        if (product.SLTon == 0)
+                        {
+                            product.TinhTrangSP = "Hết hàng";
+                        }
+                    }
                 }
 
                 database.SaveChanges();
@@ -201,7 +227,7 @@ namespace BanGiay.Controllers
             var user = GetLoggedInUser();
             var orders = database.HoaDons
                                  .Where(o => o.maUser == user.maUser)
-                                 .Include(o => o.ChiTietHoaDons.Select(c => c.SanPham)) // Tải thông tin sản phẩm
+                                 .Include(o => o.ChiTietHoaDons.Select(c => c.SanPham))
                                  .ToList();
             return View(orders);
         }

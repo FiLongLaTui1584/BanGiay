@@ -10,7 +10,7 @@ namespace BanGiay.Areas.Admin.Controllers
 {
     public class OrderManagementController : Controller
     {
-        private CNPMEntities5 database = new CNPMEntities5();
+        private CNPM_Entities database = new CNPM_Entities();
 
         public ActionResult Index()
         {

@@ -12,7 +12,7 @@ namespace BanGiay.Controllers
 {
     public class AccountController : Controller
     {
-        CNPMEntities5 objCNPMEntities = new CNPMEntities5();
+        CNPM_Entities objCNPMEntities = new CNPM_Entities();
         // GET: Account
         //public ActionResult Index()
         //{

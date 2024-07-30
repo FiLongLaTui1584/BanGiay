@@ -6,18 +6,20 @@
 <div class="features">
     <div class="container">
         <div class="wrapper">
-            @foreach (var item in Model.ThuongHieuSP.Take(1))
+            @if (Model.ThuongHieuSP.Any())
             {
+                var firstBrand = Model.ThuongHieuSP.First();
                 <div class="breadcrumb">
                     <ul class="flexitem">
                         <li><a href="\">Trang chủ</a></li>
-                        <li><a href="#">@item.TenTH</a></li>
+                        <li><a href="@Url.Action("ProductCategoryByBrand", "Category", new { MaTH = firstBrand.MaTH })">@firstBrand.TenTH</a></li>
+                        <li><a href="#">@Model.Category1.NameCate</a></li>
                     </ul>
                 </div>
             }
             <div class="column">
                 <div class="sectop flexitem">
-                    <h2><span class="circle"></span><span>TẤT CẢ SẢN PHẨM CỦA HÃNG</span></h2>
+                    <h2><span class="circle"></span><span>TẤT CẢ SẢN PHẨM</span></h2>
                 </div>
                 <div class="products main flexwrap">
                     @foreach (var item in Model.SanPham)
@@ -53,8 +55,8 @@
                                 </div>
                                 <h3><a href="@Url.Action("Detail", "Product", new { maSP = item.maSP })">@item.tenSP</a></h3>
                                 <div class="price">
-                                    <span class="current">@item.GiaGiam₫</span>
-                                    <span class="normal mini-text">@item.GiaGoc₫</span>
+                                    <span class="current">@item.GiaGiam.ToString("#,##0").Replace(',', '.')đ</span>
+                                    <span class="normal mini-text">@item.GiaGoc.ToString("#,##0").Replace(',', '.')đ </span>
                                 </div>
                             </div>
                         </div>

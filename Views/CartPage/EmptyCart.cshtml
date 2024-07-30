@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "EmptyCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EmptyCart</h2>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<style>
+    .empty ul li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+    }
+
+        .empty ul li h1 {
+            color: #4D4D4D;
+            margin-bottom: 5px;
+        }
+</style>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div class="empty">
+        <ul>
+            <li>
+                <img src="~/Content/Image/Brand/skycat.jpg" alt="anh meo" />
+            </li>
+            <li>
+                <h1>Giỏ hàng của bạn trống, hãy thêm sản phẩm rồi quay trở lại nhé</h1>
+            </li>
+            <li>
+                <a href="\">Tiếp tục mua hàng </a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

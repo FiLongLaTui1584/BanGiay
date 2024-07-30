@@ -3,6 +3,14 @@
     var userName = Session["UserName"] as string;
     var isAdmin = Session["IsAdmin"] as bool?;
     var userId = Session["UserID"] as int?;
+
+    var categories = new List<BanGiay.Context.Category>();
+    var brand = new List<BanGiay.Context.ThuongHieuSP>();
+    using (var context = new BanGiay.Context.CNPM_Entities())
+    {
+        categories = context.Categories.ToList();
+        brand = context.ThuongHieuSPs.ToList();
+    }
 }
 
 
@@ -85,55 +93,30 @@
                                         <div class="mega">
                                             <div class="container">
                                                 <div class="wrapper">
-                                                    <div class=" flexcol">
-                                                        <div class="row">
-                                                            <h4>Giày thể thao</h4>
-                                                            <ul>
-                                                                <li><a href="#">Chạy bộ</a></li>
-                                                                <li><a href="#">Gym</a></li>
-                                                                <li><a href="#">Bóng rổ</a></li>
-                                                                <li><a href="#">Bóng đá</a></li>
-                                                                <li><a href="#">Dép thể thao</a></li>
-                                                            </ul>
+                                                    @foreach (var item in categories)
+                                                    {
+                                                        <div class="flexcol">
+                                                            <div class="row">
+                                                                <h4>@item.NameCate</h4>
+                                                                <ul>
+                                                                    @foreach (var brandItem in brand)
+                                                                    {
+                                                                        <li><a href="@Url.Action("ProductCategory", "Category", new {CatID = item.CatID ,MaTH = brandItem.MaTH })">@brandItem.TenTH</a></li>
+                                                                    }
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class=" flexcol">
-                                                        <div class="row">
-                                                            <h4>Giày Thời Trang</h4>
-                                                            <ul>
-                                                                <li><a href="#">Casual</a></li>
-                                                                <li><a href="#">Highend</a></li>
-                                                                <li><a href="#">Luxury</a></li>
-                                                                <li><a href="#">Designer</a></li>
-                                                                <li><a href="#">Slipper</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class=" flexcol">
-                                                        <div class="row">
-                                                            <h4>Giày Thời Trang</h4>
-                                                            <ul>
-                                                                <li><a href="#">Casual</a></li>
-                                                                <li><a href="#">Highend</a></li>
-                                                                <li><a href="#">Luxury</a></li>
-                                                                <li><a href="#">Designer</a></li>
-                                                                <li><a href="#">Slipper</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    }
                                                     <div class=" flexcol">
                                                         <div class="row">
                                                             <h4>Thương hiệu</h4>
                                                             <ul class="women-brands">
-                                                                <li><a href="#">Nike</a></li>
-                                                                <li><a href="#">Adidas</a></li>
-                                                                <li><a href="#">Vans</a></li>
-                                                                <li><a href="#">Crocs</a></li>
-                                                                <li><a href="#">Gucci</a></li>
-                                                                <li><a href="#">Balenciaga</a></li>
-                                                                <li><a href="#">Fendi</a></li>
+                                                                @foreach (var brandItem in brand)
+                                                                {
+                                                                    <li><a href="@Url.Action("ProductCategoryByBrand", "Category", new { MaTH = brandItem.MaTH })">@brandItem.TenTH</a></li>
+                                                                }
                                                             </ul>
-                                                            <a href="@Url.Action("Viewall","Home")" class="view-all">Xem tất cả thương hiệu<i class="ri-arrow-right-line"></i></a>
+                                                            <a href="@Url.Action("Viewall","Home")" class="view-all">Xem tất cả sản phẩm<i class="ri-arrow-right-line"></i></a>
                                                         </div>
                                                     </div>
                                                     <div class="flexcol products">
@@ -168,11 +151,21 @@
                         <div class="right">
                             <ul class="flexitem second-links">
                                 <li class="mobile-hide">
-                                    <a href="#">
+                                    <a href="@Url.Action("Favorite", "Favorite")">
                                         <div class="icon-large"><i class="ri-heart-line"></i></div>
-                                        <div class="fly-item"><span class="item-number">0</span></div>
+                                        @if (Session["UserID"] != null)
+                                        {
+                                            var maUser = (int)Session["UserID"];
+                                            var favoriteCount = new BanGiay.Context.CNPM_Entities().SPYeuThiches.Count(f => f.maUser == maUser);
+                                            <div class="fly-item"><span class="item-number">@favoriteCount</span></div>
+                                        }
+                                        else
+                                        {
+                                            <div class="fly-item"><span class="item-number">0</span></div>
+                                        }
                                     </a>
                                 </li>
+
                                 <li>
                                     @Html.Action("BagCart", "CartPage")
                                 </li>
@@ -197,49 +190,15 @@
                                 </div>
                                 <div class="dpt-menu">
                                     <ul class="second-links">
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon-large"><i class="ri-home-line"></i></div>
-                                                Trang chủ
-                                            </a>
-                                        </li>
-                                        <li class="has-child Shop">
-                                            <a href="#">
-                                                <div class="icon-large"><i class="ri-menu-line"></i></div>
-                                                Cửa hàng
-                                                <div class="icon-small"><i class="ri-arrow-right-s-line"></i></div>
-                                            </a>
-                                            <div class="mega">
-                                                <div class="flexcol">
-                                                    <div class="row">
-                                                        <h4><a href="#">CỬA HÀNG</a></h4>
-                                                        <ul>
-                                                            @*@foreach(var item in Model.Category.Take(4)) {
-                                                                   <li><a href="#">@item.NameCate</a></li>
-                                                                }*@
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon-large"><i class="ri-women-line"></i></div>
-                                                Nữ
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon-large"><i class="ri-men-line"></i></div>
-                                                Nam
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="icon-large"><i class="ri-football-line"></i></div>
-                                                Trẻ em
-                                            </a>
-                                        </li>
+                                        @foreach (var cat in categories)
+                                         {
+                                            <li>
+                                                <a href="@Url.Action("ProductCategoryByCate", "Category", new { CatID = cat.CatID })">
+                                                    <div class="icon-large"><i class="ri-bard-fill"></i></div>
+                                                    @cat.NameCate
+                                                </a>
+                                            </li>
+                                         }
                                     </ul>
                                 </div>
                             </div>
@@ -444,7 +403,7 @@
     @RenderSection("scripts", required: false)
 
     <script>
-        var logoutDialogShown = false; // Biến để kiểm tra đã hiển thị hộp thoại hay chưa
+        var logoutDialogShown = false; 
 
         function showLogoutDialog() {
             if (!logoutDialogShown) {
@@ -452,7 +411,7 @@
                 if (confirm("Bạn có muốn đăng xuất?")) {
                     window.location.href = '@Url.Action("Logout", "Account")';
                 } else {
-                    logoutDialogShown = false; // Reset lại biến nếu người dùng không đồng ý đăng xuất
+                    logoutDialogShown = false;
                 }
             }
         }

@@ -13,5 +13,6 @@ namespace BanGiay.Models
         public IEnumerable<ThuongHieuSP> ThuongHieuSP { get; set; }
         public SanPham SanPham1 { get; set; }
         public string TenThuongHieu { get; set; }
+        public Category Category1 { get; set; }
     }
 }

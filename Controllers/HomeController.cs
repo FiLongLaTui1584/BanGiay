@@ -10,7 +10,7 @@ namespace BanGiay.Controllers
 {
     public class HomeController : Controller
     {
-        CNPMEntities5 objCNPMEntities = new CNPMEntities5();
+        CNPM_Entities objCNPMEntities = new CNPM_Entities();
 
         public ActionResult Index()
         {
@@ -65,5 +65,39 @@ namespace BanGiay.Controllers
 
             return View(viewModel);
         }
+
+
+
+
+
+
+        [HttpPost]
+        public JsonResult AddToFavorites(int maSP)
+        {
+            if (Session["UserID"] == null)
+            {
+                return Json(new { success = false, message = "Bạn cần đăng nhập để thêm sản phẩm vào yêu thích." });
+            }
+
+            int userId = (int)Session["UserID"];
+
+            var existingFavorite = objCNPMEntities.SPYeuThiches
+                .FirstOrDefault(f => f.maSP == maSP && f.maUser == userId);
+
+            if (existingFavorite == null)
+            {
+                var newFavorite = new SPYeuThich
+                {
+                    maSP = maSP,
+                    maUser = userId
+                };
+
+                objCNPMEntities.SPYeuThiches.Add(newFavorite);
+                objCNPMEntities.SaveChanges();
+            }
+
+            return Json(new { success = true, message = "Sản phẩm đã được thêm vào yêu thích." });
+        }
+
     }
 }

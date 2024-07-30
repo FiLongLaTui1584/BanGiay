@@ -12,7 +12,7 @@
                 <div class="breadcrumb">
                     <ul class="flexitem">
                         <li><a href="\">Trang chủ</a></li>
-                        <li><a href="@Url.Action("ProductCategory", "Category",new { MaTH = Model.SanPham1.MaTH })">@Model.TenThuongHieu</a></li>
+                        <li><a href="@Url.Action("ProductCategoryByBrand", "Category",new { MaTH = Model.SanPham1.MaTH })">@Model.TenThuongHieu</a></li>
                         <li><a href="#">@Model.SanPham1.tenSP</a></li>
                     </ul>
                 </div>
@@ -72,10 +72,18 @@
                                         <div class="stars"></div>
                                         <div class="stars"></div>
                                         <div class="stars"></div>
-                                        <a href="" class="add-review mini-text">Thêm nhận xét của bạn</a>
+                                        <a href="#" class="mini-text">Đã bán: @Model.SanPham1.SLBan</a>
                                     </div>
                                     <div class="stock-sku">
-                                        <span class="available">@Model.SanPham1.TinhTrangSP</span>
+                                        @if (Model.SanPham1.SLTon > 0)
+                                        {
+                                            <span class="available">Còn hàng</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="available" style="color:red">Hết hàng :(</span>
+                                        }
+                                        <span class="sku mini-text">Còn @Model.SanPham1.SLTon sản phẩm</span>
                                     </div>
                                     <div class="price">
                                         <span class="current">@Model.SanPham1.GiaGiam.ToString("#,##0").Replace(',', '.') VND</span>
@@ -113,16 +121,35 @@
                                             <input type="text" id="quantity-input" value="1" />
                                             <button class="plus circle">+</button>
                                         </div>
-                                        <div class="button-cart">
-                                            <button class="primary-button" id="add-to-cart-btn">Thêm vào giỏ hàng</button>
-                                        </div>
+                                        @if (Model.SanPham1.SLTon > 0)
+                                        {
+                                          <div class="button-cart">
+                                              <button class="primary-button" id="add-to-cart-btn">Thêm vào giỏ hàng</button>
+                                          </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="button-cart">
+                                                <button class="primary-button">Không thể thêm vào giỏ hàng</button>
+                                            </div>
+                                        }
                                         <div class="wish-share">
                                             <ul class="flexitem second-links">
                                                 <li>
-                                                    <a href="#">
-                                                        <span class="icon-large"><i class="ri-heart-line"></i></span>
-                                                        <span>Yêu thích</span>
-                                                    </a>
+                                                    @if (Session["UserID"] == null)
+                                                    {
+                                                        <a href="@Url.Action("Login", "Account")">
+                                                            <span class="icon-large"><i class="ri-heart-line"></i></span>
+                                                            <span>Yêu thích</span>
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="#" id="add-to-favorites" data-product-id="@Model.SanPham1.maSP">
+                                                            <span class="icon-large"><i class="ri-heart-line"></i></span>
+                                                            <span>Yêu thích</span>
+                                                        </a>
+                                                    }
                                                 </li>
                                                 <li>
                                                     <a href="#">
@@ -139,9 +166,8 @@
                                                 <a href="#" class="icon-small">Chi tiết</a>
                                                 <ul class="content">
                                                     <li><span>Thương hiệu</span><span>@Model.TenThuongHieu</span></li>
-                                                    <li><span>Đã bán</span><span>@Model.SanPham1.SLBan</span></li>
                                                     <li><span>Màu sắc</span><span>@Model.SanPham1.MauSac</span></li>
-                                                    <li><span>Giới tính</span><span>Gay</span></li>
+                                                    <li><span>Giới tính</span><span>@Model.Category1.NameCate</span></li>
                                                 </ul>
                                             </li>
                                             <li class="has-child">
@@ -306,32 +332,58 @@
         </div>
     </div>
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const minusButton = document.querySelector('.minus');
-        const plusButton = document.querySelector('.plus');
-        const inputField = document.getElementById('quantity-input');
-        const addToCartBtn = document.getElementById('add-to-cart-btn');
+        document.addEventListener('DOMContentLoaded', function () {
+            const minusButton = document.querySelector('.minus');
+            const plusButton = document.querySelector('.plus');
+            const inputField = document.getElementById('quantity-input');
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
 
-        minusButton.addEventListener('click', function () {
-            let currentValue = parseInt(inputField.value);
-            if (currentValue > 1) {
-                inputField.value = currentValue - 1;
-            }
-        });
+            minusButton.addEventListener('click', function () {
+                let currentValue = parseInt(inputField.value);
+                if (currentValue > 1) {
+                    inputField.value = currentValue - 1;
+                }
+            });
 
-        plusButton.addEventListener('click', function () {
-            let currentValue = parseInt(inputField.value);
-            inputField.value = currentValue + 1;
-        });
+            plusButton.addEventListener('click', function () {
+                let currentValue = parseInt(inputField.value);
+                inputField.value = currentValue + 1;
+            });
 
-        addToCartBtn.addEventListener('click', function () {
-            const quantity = inputField.value;
-            const productId = '@Model.SanPham1.maSP'; // ID sản phẩm từ model
-            window.location.href = `@Url.Action("AddToCart", "CartPage")?id=${productId}&quantity=${quantity}`;
+            addToCartBtn.addEventListener('click', function () {
+                const quantity = inputField.value;
+                const productId = '@Model.SanPham1.maSP'; 
+                window.location.href = `@Url.Action("AddToCart", "CartPage")?id=${productId}&quantity=${quantity}`;
+            });
         });
-    });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#add-to-favorites').click(function(e) {
+                e.preventDefault();
 
+                var productId = $(this).data('product-id');
+
+                $.ajax({
+                    url: '@Url.Action("AddToFavorites", "Product")',
+                    type: 'POST',
+                    data: { maSP: productId },
+                    success: function(response) {
+                        if (response.success) {
+                            alert(response.message);
+                        } else {
+                            alert(response.message);
+                            window.location.href = '@Url.Action("Login", "Account")';
+                        }
+                    },
+                    error: function() {
+                        alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+                    }
+                });
+            });
+        });
+    </script>
 
 
 </main>

@@ -21,7 +21,7 @@ namespace BanGiay.Context
         }
     
         public int maHD { get; set; }
-        public System.DateTime NgayDat { get; set; }
+        public DateTime NgayDat { get; set; }
         public Nullable<int> maUser { get; set; }
         public string diaChi { get; set; }
         public string TrangThai { get; set; }

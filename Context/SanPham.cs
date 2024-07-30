@@ -39,6 +39,7 @@ namespace BanGiay.Context
         public int maDanhgia { get; set; }
         public int maSize { get; set; }
         public Nullable<int> giamGia { get; set; }
+        public Nullable<int> SLTon { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

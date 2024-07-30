@@ -15,7 +15,7 @@ namespace BanGiay.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        CNPMEntities5 database = new CNPMEntities5();
+        CNPM_Entities database = new CNPM_Entities();
         // GET: Admin/Home
         public ActionResult Index()
         {
@@ -136,6 +136,7 @@ namespace BanGiay.Areas.Admin.Controllers
             return View(sanpham);
         }
 
+
         [HttpPost]
         public ActionResult Edit(int id, SanPham sanpham)
         {
@@ -182,6 +183,12 @@ namespace BanGiay.Areas.Admin.Controllers
                     existingSanPham.maDanhgia = sanpham.maDanhgia;
                     existingSanPham.maSize = sanpham.maSize;
                     existingSanPham.giamGia = sanpham.giamGia;
+                    existingSanPham.SLTon = sanpham.SLTon;
+
+                    if (sanpham.SLTon == 0)
+                    {
+                        existingSanPham.TinhTrangSP = "Hết hàng";
+                    }
 
                     database.Entry(existingSanPham).State = EntityState.Modified;
                     database.SaveChanges();
@@ -196,6 +203,12 @@ namespace BanGiay.Areas.Admin.Controllers
                 }
             }
         }
+
+
+
+
+
+
 
 
 

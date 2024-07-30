@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
 <main>
     <!----------------SLIDER--------------->
     <div class="slider">
@@ -64,7 +63,7 @@
                 @foreach (var item in Model.ThuongHieuSP)
                 {
                     <div class="item">
-                        <a href="@Url.Action("ProductCategory", "Category", new { MaTH = item.MaTH })">
+                        <a href="@Url.Action("ProductCategoryByBrand", "Category", new { MaTH = item.MaTH })">
                             <img src="@Url.Content(item.Logo)" style="width:200px;height:100px" alt="" />
                         </a>
                     </div>
@@ -96,7 +95,20 @@
                                     </div>
                                     <div class="hoverable">
                                         <ul>
-                                            <li class="active"><a href="#"><i class="ri-heart-line"></i></a></li>
+                                            <li class="active">
+                                                @if (Session["UserID"] == null)
+                                                {
+                                                    <a href="@Url.Action("Login", "Account")">
+                                                        <i class="ri-heart-line"></i>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="#" class="add-to-favorites" data-product-id="@item.maSP">
+                                                        <i class="ri-heart-line"></i>
+                                                    </a>
+                                                }
+                                            </li>
                                             <li>
                                                 <a href="@Url.Action("Detail", "Product", new { maSP = item.maSP })">
                                                     <i class="ri-eye-line"></i>
@@ -168,6 +180,32 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.add-to-favorites').click(function(e) {
+            e.preventDefault();
 
+            var productId = $(this).data('product-id');
+
+            $.ajax({
+                url: '@Url.Action("AddToFavorites", "Home")',
+                type: 'POST',
+                data: { maSP: productId },
+                success: function(response) {
+                    if (response.success) {
+                        alert(response.message);
+                    } else {
+                        alert(response.message);
+                        window.location.href = '@Url.Action("Login", "Account")';
+                    }
+                },
+                error: function() {
+                    alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+                }
+            });
+        });
+    });
+    </script>
 </main>
 <!-----------------------main---------------------->

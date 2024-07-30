@@ -6,7 +6,7 @@ namespace BanGiay.Areas.Admin.Controllers
 {
     public class UserController : Controller
     {
-        CNPMEntities5 database = new CNPMEntities5();
+        CNPM_Entities database = new CNPM_Entities();
 
         // GET: Admin/User
         public ActionResult Index()

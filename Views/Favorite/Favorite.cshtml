@@ -1,0 +1,92 @@
+﻿@model List<BanGiay.Context.SanPham>
+
+@{
+    ViewBag.Title = "Sản Phẩm Yêu Thích";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="single-cart">
+        <div class="container">
+            <div class="wrapper">
+                <div class="breadcrumb">
+                    <ul class="flexitem">
+                        <li><a href="\">Trang chủ</a></li>
+                        <li>Sản phẩm yêu thích</li>
+                    </ul>
+                </div>
+                <div class="sectop flexitem">
+                    <h2><span class="circle"></span><span>SẢN PHẨM YÊU THÍCH</span></h2>
+                </div>
+                <div class="products one cart">
+                    <div class="flexwrap">
+                        @if (Model != null && Model.Any())
+                        {
+                            <table id="favorite-table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Sản phẩm</th>
+                                        <th>Giá gốc</th>
+                                        <th>Giá đã giảm</th>
+                                        <th>Bỏ thích</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="flexitem">
+                                                <div class="thumbnail object-cover">
+                                                    <a href="@Url.Action("Detail", "Product", new { maSP = item.maSP })">
+                                                        <img src="~/Content/Image/SanPham/@item.HinhAnh1" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <strong><a href="@Url.Action("Detail", "Product", new { maSP = item.maSP })">@item.tenSP</a></strong>
+                                                    <p>Màu sắc: @item.MauSac</p>
+                                                </div>
+                                            </td>
+                                            <td>@item.GiaGoc.ToString("#,##0").Replace(',', '.') VND</td>
+                                            <td>@item.GiaGiam.ToString("#,##0").Replace(',', '.') VND</td>
+                                            <td><a href="#" class="item-remove" data-product-id="@item.maSP"><i class="ri-close-line"></i></a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <h4>Danh sách yêu thích của bạn trống!</h4>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.item-remove').click(function(e) {
+                e.preventDefault();
+                var productId = $(this).data('product-id');
+
+                $.ajax({
+                    url: '@Url.Action("RemoveFromFavorites", "Favorite")',
+                    type: 'POST',
+                    data: { maSP: productId },
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Sản phẩm đã được xóa khỏi danh sách yêu thích.');
+                            location.reload();
+                        } else {
+                            alert(response.message);
+                        }
+                    },
+                    error: function() {
+                        alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+                    }
+                });
+            });
+        });
+    </script> 
+</main>

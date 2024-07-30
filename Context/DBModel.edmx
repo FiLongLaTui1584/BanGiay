@@ -69,6 +69,7 @@
           <Property Name="maDanhgia" Type="int" Nullable="false" />
           <Property Name="maSize" Type="int" Nullable="false" />
           <Property Name="giamGia" Type="int" />
+          <Property Name="SLTon" Type="int" />
         </EntityType>
         <EntityType Name="SPYeuThich">
           <Key>
@@ -347,6 +348,7 @@
           <Property Name="maDanhgia" Type="Int32" Nullable="false" />
           <Property Name="maSize" Type="Int32" Nullable="false" />
           <Property Name="giamGia" Type="Int32" />
+          <Property Name="SLTon" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="Self.FK__SanPham__CatID__4316F928" FromRole="SanPham" ToRole="Category" />
           <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK__ChiTietHoa__maSP__4E88ABD4" FromRole="SanPham" ToRole="ChiTietHoaDon" />
           <NavigationProperty Name="DanhGia" Relationship="Self.FK__SanPham__maDanhg__440B1D61" FromRole="SanPham" ToRole="DanhGia" />
@@ -509,7 +511,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CNPMEntities5" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CNPM_Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
           <EntitySet Name="DanhGias" EntityType="Self.DanhGia" />
@@ -565,7 +567,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="CNPMEntities5">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="CNPM_Entities">
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="Model.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -634,6 +636,7 @@
                 <ScalarProperty Name="maDanhgia" ColumnName="maDanhgia" />
                 <ScalarProperty Name="maSize" ColumnName="maSize" />
                 <ScalarProperty Name="giamGia" ColumnName="giamGia" />
+                <ScalarProperty Name="SLTon" ColumnName="SLTon" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

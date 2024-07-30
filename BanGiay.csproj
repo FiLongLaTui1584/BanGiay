@@ -177,6 +177,7 @@
     <Compile Include="Controllers\CartPageController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\FavoriteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -214,6 +215,7 @@
     <Content Include="Content\Image\Brand\logo_NB.png" />
     <Content Include="Content\Image\Brand\logo_Nike.jpg" />
     <Content Include="Content\Image\Brand\logo_Puma.jpg" />
+    <Content Include="Content\Image\Brand\skycat.jpg" />
     <Content Include="Context\DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBModel.edmx</DependentUpon>
@@ -299,6 +301,10 @@
     <Content Include="Views\CartPage\CheckOut_Success.cshtml" />
     <Content Include="Views\CartPage\OrderStatus.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Category\ProductCategoryByBrand.cshtml" />
+    <Content Include="Views\Category\ProductCategoryByCate.cshtml" />
+    <Content Include="Views\Favorite\Favorite.cshtml" />
+    <Content Include="Views\CartPage\EmptyCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
